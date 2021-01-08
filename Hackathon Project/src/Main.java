@@ -1,3 +1,7 @@
+	
+/*
+ * This class starts the application via the command line arguments.
+ */
 
 public class Main {
 	
@@ -8,8 +12,9 @@ public class Main {
 		// create reader, processor, and user interface objects
 		NetflixCSVReader reader = new NetflixCSVReader(filename);
 		NetflixProcessor processor = new NetflixProcessor(reader);
-		NetflixUserInterface ui = new NetflixUserInterface(processor);
-		
+		NetflixSearch searcher = new NetflixSearch(processor);
+		NetflixUserInterface ui = new NetflixUserInterface(processor, searcher);
+				
 		ui.start(); // run the program to interact with user
 	}
 }

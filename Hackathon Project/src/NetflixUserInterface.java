@@ -1,13 +1,18 @@
 import java.util.Scanner;
 
+/* 
+ * This class is responsible for interacting with the user and processing data as it relates to displaying it. 
+ */
+
 public class NetflixUserInterface {
 	
 	protected NetflixProcessor processor;
+	protected NetflixSearch searcher;
 	protected Scanner in;
 
-	public NetflixUserInterface(NetflixProcessor processor) {
+	public NetflixUserInterface(NetflixProcessor processor, NetflixSearch searcher) {
 		this.processor = processor;
-		in = new Scanner(System.in);
+		this.searcher = searcher;
 	}
 	
 	// starts the user interface

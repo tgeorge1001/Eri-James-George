@@ -4,6 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+ * This class handles the reading of the Netflix CSV file taken from Kaggle.
+ */
+
 public class NetflixCSVReader {
 	
 	protected String filename;
