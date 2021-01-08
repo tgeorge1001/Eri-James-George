@@ -17,6 +17,6 @@ public class NetflixUserInterface {
 	
 	// starts the user interface
 	public void start() {
-	
+		HackflixMainGUI mainGUI = new HackflixMainGUI();
 	}
 }
