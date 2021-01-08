@@ -64,6 +64,8 @@ public class NetflixData {
 	 */
 	String description;
 	
+	// Constructor method
+	
 	/**
 	 * Creates a NetflixData object using the given type, title, director, cast, country, release year, rating, duration, genre, and description.
 	 * @param type of the content.
@@ -249,5 +251,15 @@ public class NetflixData {
 	 */
 	void setDescription(String description) {
 		this.description = description;
-	}	
+	}
+	
+	// toString method
+	
+	/**
+	 * Returns the title of the Movie or TV Show as the string representation of this content.
+	 */
+	@Override
+	public String toString() {
+		return this.title;
+	}
 }
