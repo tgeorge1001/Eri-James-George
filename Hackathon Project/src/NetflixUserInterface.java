@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class NetflixUserInterface {
+	
 	protected NetflixProcessor processor;
 	protected Scanner in;
 
