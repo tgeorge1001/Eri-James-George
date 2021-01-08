@@ -256,10 +256,12 @@ public class NetflixData {
 	// toString method
 	
 	/**
-	 * Returns the title of the Movie or TV Show as the string representation of this content.
+	 * Returns a string the clearly shows all of the values within this Movie or TV Show.
 	 */
 	@Override
 	public String toString() {
-		return this.title;
+		return "NetflixData [showid=" + showid + ", type=" + type + ", title=" + title + ", director=" + director
+				+ ", cast=" + cast + ", country=" + country + ", releaseyear=" + releaseyear + ", rating=" + rating
+				+ ", duration=" + duration + ", genre=" + genre + ", description=" + description + "]";
 	}
 }
