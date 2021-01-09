@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -35,9 +33,14 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextArea;
 
+
+/*
+ * This class creates the Hackflix GUI.
+ */
+
 public class HackflixMainGUI {
 
-	private JFrame frmHackflix;
+	public JFrame frmHackflix;
 	private JLayeredPane panel = new JLayeredPane();
 	private JPanel results_panel = new JPanel();
 	private JPanel search_panel = new JPanel();
@@ -48,35 +51,36 @@ public class HackflixMainGUI {
 	boolean movies = false;
 	boolean tvshow = false;
 	boolean both = false;
+	
+	protected NetflixSearch searcher;
 
 	/**
-	 * Launch the application.
+	 * Create the GUI application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HackflixMainGUI window = new HackflixMainGUI();
-					window.frmHackflix.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public HackflixMainGUI() {
+	public HackflixMainGUI(NetflixSearch searcher) {
+		this.searcher = searcher;
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
+	/*
+	 * Create and add contents to the GUI.
 	 */
 	private void initialize() {
 		
+		setJFrame();
+		setJLayeredPane();
+		setMainJPanel();
+		setSearchJPanel();
+		setResultsJPanel();
+		
+		frmHackflix.pack();
+		frmHackflix.setVisible(true);
+	}
+	
+	/*
+	 * Initialize JFrame.
+	 */
+	private void setJFrame() {
 		frmHackflix = new JFrame();
 		frmHackflix.setTitle("Hackflix");
 		frmHackflix.setBackground(Color.DARK_GRAY);
@@ -84,17 +88,11 @@ public class HackflixMainGUI {
 		frmHackflix.getContentPane().setLayout(new BorderLayout(0, 0));
 		frmHackflix.getContentPane().setSize(800,400);
 		frmHackflix.setResizable(false);
-	
-		setJLayeredPane();
-		setMainJPanel();
-		setSearchJPanel();
-		setResultsJPanel();
-		
-		
-		frmHackflix.pack();
-		frmHackflix.setVisible(true);
 	}
 	
+	/* 
+	 * Initialize JLayeredPane.
+	 */
 	private void setJLayeredPane() {
 		panel.setBackground(Color.BLACK);
 		panel.setPreferredSize(new Dimension(800, 500));
@@ -103,6 +101,9 @@ public class HackflixMainGUI {
 		panel.setLayout(sl_panel);
 	}
 	
+	/* 
+	 * Initialize Search Page JPanel.
+	 */
 	private void setSearchJPanel() {
 		search_panel.setBounds(0, 0, 800, 500);
 		search_panel.setBackground(Color.BLACK);
@@ -344,6 +345,9 @@ public class HackflixMainGUI {
 				
 	}
 	
+	/* 
+	 * Initialize Results Page JPanel.
+	 */
 	private void setResultsJPanel() {
 		results_panel.setBounds(0, 0, 800, 500);
 		results_panel.setBackground(new Color(255, 255, 255));
@@ -468,6 +472,9 @@ public class HackflixMainGUI {
 		//results_scrollPane.setColumnHeaderView(txtrLoremIpsumDolor);	
 	}
 	
+	/* 
+	 * Initialize Main Page JPanel.
+	 */
 	private void setMainJPanel() {
 		main_panel.setBounds(0, 0, 800, 500);
 		main_panel.setBackground(Color.BLACK);
@@ -603,6 +610,9 @@ public class HackflixMainGUI {
 		txtQuickSearch.setColumns(10);
 	}
 	
+	/* 
+	 * Initialize SwingAction.
+	 */
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "SwingAction");
