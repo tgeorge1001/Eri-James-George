@@ -161,6 +161,11 @@ public class HackflixMainGUI {
 		gbc_genre_combobox.gridy = 5;
 		genre_combobox.setForeground(Color.BLACK);
 		genre_combobox.setBackground(Color.GRAY);
+		genre_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(genre_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(genre_combobox, gbc_genre_combobox);
 		
 		JComboBox releaseyear_combobox = new JComboBox();
@@ -173,6 +178,11 @@ public class HackflixMainGUI {
 		gbc_releaseyear_combobox.gridy = 5;
 		releaseyear_combobox.setForeground(Color.BLACK);
 		releaseyear_combobox.setBackground(Color.GRAY);
+		releaseyear_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(releaseyear_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(releaseyear_combobox, gbc_releaseyear_combobox);
 		
 		JComboBox rating_combobox = new JComboBox();
@@ -185,6 +195,11 @@ public class HackflixMainGUI {
 		gbc_rating_combobox.gridy = 5;
 		rating_combobox.setForeground(Color.BLACK);
 		rating_combobox.setBackground(Color.GRAY);
+		rating_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(rating_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(rating_combobox, gbc_rating_combobox);
 		
 		JLabel director_label = new JLabel("Director");
@@ -221,6 +236,11 @@ public class HackflixMainGUI {
 		gbc_director_combobox.gridy = 8;
 		director_combobox.setForeground(Color.BLACK);
 		director_combobox.setBackground(Color.GRAY);
+		director_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(director_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(director_combobox, gbc_director_combobox);
 		
 		JComboBox cast_combobox = new JComboBox();
@@ -233,6 +253,11 @@ public class HackflixMainGUI {
 		gbc_cast_combobox.gridy = 8;
 		cast_combobox.setForeground(Color.BLACK);
 		cast_combobox.setBackground(Color.GRAY);
+		cast_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(cast_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(cast_combobox, gbc_cast_combobox);
 		
 		JComboBox duration_combobox = new JComboBox();
@@ -245,6 +270,11 @@ public class HackflixMainGUI {
 		gbc_duration_combobox.gridy = 8;
 		duration_combobox.setForeground(Color.BLACK);
 		duration_combobox.setBackground(Color.GRAY);
+		duration_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(duration_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(duration_combobox, gbc_duration_combobox);
 		
 		JLabel country_label = new JLabel("Country");
@@ -289,6 +319,11 @@ public class HackflixMainGUI {
 		gbc_find_my_rec_button.gridy = 13;
 		country_combobox.setForeground(Color.BLACK);
 		country_combobox.setBackground(Color.GRAY);
+		country_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String selection = String.valueOf(country_combobox.getSelectedItem());
+			}
+		});
 		grid_panel.add(find_my_rec_button, gbc_find_my_rec_button);
 				
 	}
@@ -339,7 +374,11 @@ public class HackflixMainGUI {
 		sort_by_combobox.setForeground(Color.BLACK);
 		sort_by_combobox.setBackground(Color.GRAY);
 		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Title (Descending)", "Title (Ascending)", "Release Year (Descending)", "Release Year (Ascending)"}));
-		
+		sort_by_combobox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selection = sort_by_combobox.getSelectedIndex();
+			}
+		});
 		sort_by_panel.add(sort_by_combobox);
 		
 		String sampleText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultrices at magna a volutpat. Pellentesque eget hendrerit magna, non fermentum urna. Aliquam sagittis iaculis volutpat. Quisque dictum, ante ac ultrices luctus, mauris neque imperdiet sem, in luctus ipsum libero a lacus. Donec id sagittis elit. Donec nec venenatis massa, in feugiat felis. Mauris arcu turpis, suscipit iaculis rhoncus eu, egestas vitae lectus. Quisque dapibus, orci et mollis placerat, sem ex ornare elit, eu maximus lacus mi a tortor. Praesent consequat diam dolor, vel vehicula sem sollicitudin a. Mauris a laoreet odio.\n"
@@ -375,7 +414,6 @@ public class HackflixMainGUI {
 		gbc_results_scrollPane.gridwidth = 3;
 		results_scrollPane.setBorder(null);
 		results_scrollPane.getViewport().setBackground(Color.GRAY);
-		
 		
 		JPanel new_search_panel = new JPanel();
 		new_search_panel.setBackground(new Color(255, 255, 255));

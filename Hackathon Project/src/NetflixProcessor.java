@@ -20,7 +20,6 @@ public class NetflixProcessor {
 	/* 
 	 * HashSet stores all choices for each feature of a Netflix show 
 	 * */
-	private HashSet<Integer> showIDSet = new HashSet<Integer>();
 	private HashSet<String> typeSet = new HashSet<String>();
 	private HashSet<String> titleSet = new HashSet<String>();
 	private HashSet<String> directorSet = new HashSet<String>();
@@ -40,7 +39,6 @@ public class NetflixProcessor {
 		this.allNetflixData = reader.getAllNetflixData();
 		
 		for (NetflixData data : allNetflixData) {
-			showIDSet.add(data.getShowid());
 			typeSet.add(data.getType());
 			titleSet.add(data.getTitle());
 			directorSet.addAll(data.getDirector());
@@ -59,10 +57,6 @@ public class NetflixProcessor {
 	 */
 	public List<NetflixData> getSearchResults() {
 		return searchResults;
-	}
-
-	public HashSet<Integer> getShowIDSet() {
-		return showIDSet;
 	}
 
 	public HashSet<String> getTypeSet() {
