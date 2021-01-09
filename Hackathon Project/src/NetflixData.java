@@ -12,7 +12,7 @@ public class NetflixData {
 	/**
 	 * A unique ID for this particular content.
 	 */
-	int showid;
+	//int showid;
 	
 	/**
 	 * A string that represents the content's type, either "TV Show" or "Movie"
@@ -27,17 +27,17 @@ public class NetflixData {
 	/**
 	 * The directors of this movie or tv show, if any are listed.
 	 */
-	ArrayList<String> director;
+	ArrayList<String> director = new ArrayList<String>();;
 	
 	/**
 	 * The cast of this movie or tv show, if any are listed.
 	 */
-	ArrayList<String> cast;
+	ArrayList<String> cast = new ArrayList<String>();;
 	
 	/**
 	 * The country or countries where the movie or tv show was produced.
 	 */
-	ArrayList<String> country;
+	ArrayList<String> country = new ArrayList<String>();;
 	
 	/**
 	 * The year this movie or TV show was released.
@@ -57,7 +57,7 @@ public class NetflixData {
 	/**
 	 * All the categories this movie or tv show is listed under.
 	 */
-	ArrayList<String> genre;
+	ArrayList<String> genre = new ArrayList<String>();;
 	
 	/**
 	 * A description of the movie or TV show.
@@ -79,10 +79,10 @@ public class NetflixData {
 	 * @param genre of the content.
 	 * @param description of the content.
 	 */
-	public NetflixData(int showid, String type, String title, ArrayList<String> director, ArrayList<String> cast,
+	public NetflixData(String type, String title, ArrayList<String> director, ArrayList<String> cast,
 			ArrayList<String> country, int releaseyear, String rating, int duration, ArrayList<String> genre,
 			String description) {
-		this.showid = showid;
+		//this.showid = showid;
 		this.type = type;
 		this.title = title;
 		this.director = director;
@@ -100,77 +100,77 @@ public class NetflixData {
 	/**
 	 * @return the type
 	 */
-	String getType() {
+	public String getType() {
 		return type;
 	}
 
 	/**
 	 * @return the showid
 	 */
-	int getShowid() {
-		return showid;
-	}
+	//public int getShowid() {
+		//return showid;
+	//}
 
 	/**
 	 * @return the title
 	 */
-	String getTitle() {
+	public String getTitle() {
 		return title;
 	}
 
 	/**
 	 * @return the director
 	 */
-	ArrayList<String> getDirector() {
+	public ArrayList<String> getDirector() {
 		return director;
 	}
 
 	/**
 	 * @return the cast
 	 */
-	ArrayList<String> getCast() {
+	public ArrayList<String> getCast() {
 		return cast;
 	}
 
 	/**
 	 * @return the country
 	 */
-	ArrayList<String> getCountry() {
+	public ArrayList<String> getCountry() {
 		return country;
 	}
 
 	/**
 	 * @return the release year
 	 */
-	int getReleaseyear() {
+	public int getReleaseyear() {
 		return releaseyear;
 	}
 
 	/**
 	 * @return the rating
 	 */
-	String getRating() {
+	public String getRating() {
 		return rating;
 	}
 
 	/**
 	 * @return the duration
 	 */
-	int getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 
 	/**
 	 * @return the genre
 	 */
-	ArrayList<String> getGenre() {
+	public ArrayList<String> getGenre() {
 		return genre;
 	}
 
 	/**
 	 * @return the description
 	 */
-	String getDescription() {
+	public String getDescription() {
 		return description;
 	}
 	
@@ -179,77 +179,77 @@ public class NetflixData {
 	/**
 	 * @param showid the showid to set
 	 */
-	void setShowid(int showid) {
-		this.showid = showid;
-	}
+	//public void setShowid(int showid) {
+		//this.showid = showid;
+	//}
 
 	/**
 	 * @param type the type to set
 	 */
-	void setType(String type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
 	/**
 	 * @param title the title to set
 	 */
-	void setTitle(String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 
 	/**
 	 * @param director the director to set
 	 */
-	void setDirector(ArrayList<String> director) {
+	public void setDirector(ArrayList<String> director) {
 		this.director = director;
 	}
 
 	/**
 	 * @param cast the cast to set
 	 */
-	void setCast(ArrayList<String> cast) {
+	public void setCast(ArrayList<String> cast) {
 		this.cast = cast;
 	}
 
 	/**
 	 * @param country the country to set
 	 */
-	void setCountry(ArrayList<String> country) {
+	public void setCountry(ArrayList<String> country) {
 		this.country = country;
 	}
 
 	/**
 	 * @param releaseyear the releaseyear to set
 	 */
-	void setReleaseyear(int releaseyear) {
+	public void setReleaseyear(int releaseyear) {
 		this.releaseyear = releaseyear;
 	}
 
 	/**
 	 * @param rating the rating to set
 	 */
-	void setRating(String rating) {
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
 
 	/**
 	 * @param duration the duration to set
 	 */
-	void setDuration(int duration) {
+	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 
 	/**
 	 * @param genre the genre to set
 	 */
-	void setGenre(ArrayList<String> genre) {
+	public void setGenre(ArrayList<String> genre) {
 		this.genre = genre;
 	}
 
 	/**
 	 * @param description the description to set
 	 */
-	void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 	
@@ -260,7 +260,7 @@ public class NetflixData {
 	 */
 	@Override
 	public String toString() {
-		return "NetflixData [showid=" + showid + ", type=" + type + ", title=" + title + ", director=" + director
+		return "NetflixData [type=" + type + ", title=" + title + ", director=" + director
 				+ ", cast=" + cast + ", country=" + country + ", releaseyear=" + releaseyear + ", rating=" + rating
 				+ ", duration=" + duration + ", genre=" + genre + ", description=" + description + "]";
 	}
