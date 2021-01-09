@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+
 
 /*
  * This class starts the application via the command line arguments.
@@ -10,12 +10,16 @@ public class Main {
 	
 		String filename = args[0];
 		
-		// create reader, processor, and user interface objects
+		// create reader, processor
 		NetflixCSVReader reader = new NetflixCSVReader(filename);
-		NetflixProcessor processor = new NetflixProcessor(reader);
-		NetflixSearch searcher = new NetflixSearch(processor);		
+		reader.parseData();
 		
-		// start the GUI
+		// commenting out the rest of code for now to test the CSV Reader
+		//NetflixProcessor processor = new NetflixProcessor(reader);
+		//NetflixSearch searcher = new NetflixSearch(processor);	
+		
+		// start the GUI 
+		/*
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -25,7 +29,7 @@ public class Main {
 					e.printStackTrace();
 				}
 			}
-		});
+		}); */
 				
 	}
 }

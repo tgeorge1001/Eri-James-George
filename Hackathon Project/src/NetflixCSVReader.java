@@ -1,46 +1,49 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
 import java.io.*;
-import java.math.*;
 import java.util.*;
-import java.util.Map.*;
-
 import java.lang.IllegalStateException;
 import java.lang.String;
 
 //package com.univocity.parsers.*;
 
-import com.univocity.parsers.common.*;
 import com.univocity.parsers.common.processor.*;
 import com.univocity.parsers.common.record.*;
-import com.univocity.parsers.conversions.*;
 import com.univocity.parsers.csv.*;
 //import org.testng.annotations.*;
 /*
  * This class handles the reading of the Netflix CSV file taken from Kaggle.
  */
 
+
 public class NetflixCSVReader {
 	
 	protected String filename;
+	List<NetflixData> allNetflixData = new LinkedList<NetflixData>();
 
 	public NetflixCSVReader(String name) {
-		filename = name;
+		filename = name;	
+		
 	}
+	
 	
 	public Reader getReader(String relativePath) {
 	    try {
-	        return new InputStreamReader(this.getClass().getResourceAsStream(relativePath), "Windows-1252");
-	    } catch (UnsupportedEncodingException e) {
+	        return new InputStreamReader(new FileInputStream(new File(relativePath)), "UTF-8");
+	    } catch (IOException e) {
 	        throw new IllegalStateException("Unable to read input", e);
-	    }
+	    } 
 	}
 	
-	public void columnSelection() {
+	public List<NetflixData> parseData() {
+		
 	    RowListProcessor rowProcessor = new RowListProcessor();
 	    CsvParserSettings parserSettings = new CsvParserSettings();
-
+	    boolean first = false;
+	    
+	    parserSettings.setSkipEmptyLines(true); // skip empty lines
+	    parserSettings.selectIndexes(1, 2, 3, 4, 5, 7, 8, 9, 10, 11); // only parse these column numbers
+	    parserSettings.setColumnReorderingEnabled(false); // retain csv column order
+	    
+	    /*
 	    parserSettings.setRowProcessor(rowProcessor);
 	    parserSettings.setHeaderExtractionEnabled(true);
 	    parserSettings.setLineSeparatorDetectionEnabled(true);
@@ -50,17 +53,62 @@ public class NetflixCSVReader {
 	    // Here we select only certain columns.
 	    // The parser just skips the other fields
 	    parserSettings.selectFields("type", "title", "director", "cast", "country", "releaseyear", "rating", "duration", "genre", "description");
-
+	     */
+	    
 	    CsvParser parser = new CsvParser(parserSettings);
-	    parser.parse(getReader("netflix_titles.csv"));
-
+	    
+	    parser.beginParsing(getReader("netflix_titles.csv"));
+	    
+	    // Use these ArrayLists to store fields with multiple values
+    	ArrayList<String> director = new ArrayList<String>();
+    	ArrayList<String> cast = new ArrayList<String>();
+    	ArrayList<String> country = new ArrayList<String>();
+    	ArrayList<String> genre = new ArrayList<String>();
+    	
+    	Record record;
+    	
+    	// iterate through csv line by line using Record class and parser
+	    while ((record = parser.parseNextRecord()) != null) {
+	    	
+	    	// ignore storing the first line of the csv file
+	    	if (first == false) {
+	    		first = true;
+	    	}
+	    	else {
+	    		// remove any non-numerical char from "duration" field
+		    	String durationNoChar = record.getString("duration");
+		    	durationNoChar = durationNoChar.replaceAll("[^\\d.]", "");
+		    	
+		    	// create NetflixData objects
+		    	NetflixData nfd = new NetflixData(record.getString("type"), record.getString("title"), director, 
+		    			cast, country, Integer.valueOf(record.getString("release_year")), record.getString("rating"),
+		    			Integer.valueOf(durationNoChar), genre, "duration"); 
+		    	
+		    	System.out.println(nfd.toString()); // test print
+		    	
+		    	allNetflixData.add(nfd); // add NetflixData object to list
+	    	}
+	        
+	    }
+	    parser.stopParsing();
+	    
+	    return allNetflixData;
+	    
+	    /*
+	    List<String[]> parsedRows = parser.parseAll(getReader("netflix_titles.csv"));
+	    
+	    System.out.println(Arrays.toString(parsedRows.get(0)));
+	    
 	    List<String[]> rows = rowProcessor.getRows();
 
 	    String[] strings = rows.get(0);
 
-	    System.out.print(strings[0]);
+	    System.out.println(strings[0]); 
+	    */
 
 	}
+	
+	
 	// to-do: here is an example parser, but it's REALLY slow for large files, 
 	// so I think we should make this method more efficient
 	/*public List<NetflixData> getAllNetflixData() {
