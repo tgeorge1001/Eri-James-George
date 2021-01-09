@@ -32,13 +32,17 @@ import javax.swing.Action;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
 
 public class HackflixMainGUI {
 
 	private JFrame frmHackflix;
 	private JTextField txtQuickSearch;
 	private final Action action = new SwingAction();
-	private JTextField txtTypeKeywordHere;
 	boolean movies = false;
 	boolean tvshow = false;
 	boolean both = false;
@@ -86,6 +90,69 @@ public class HackflixMainGUI {
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 		
+		JPanel results_panel = new JPanel();
+		results_panel.setBounds(0, 0, 800, 500);
+		results_panel.setBackground(new Color(255, 255, 255));
+		results_panel.setPreferredSize(new Dimension(600, 800));
+		panel.add(results_panel);
+		results_panel.setVisible(false);
+		
+		JPanel results_grid_panel = new JPanel();
+		results_grid_panel.setBackground(new Color(255, 255, 255));
+		results_panel.add(results_grid_panel);
+		GridBagLayout gbl_results_grid_panel = new GridBagLayout();
+		gbl_results_grid_panel.columnWidths = new int[]{0, 70, 325, 70, 0};
+		gbl_results_grid_panel.rowHeights = new int[]{20, 120, 0, 450};
+		gbl_results_grid_panel.columnWeights = new double[]{1.0, 0.0, 1.0, 0.0, 0.0};
+		gbl_results_grid_panel.rowWeights = new double[]{1.0, 0.0, 1.0, 1.0};
+		results_grid_panel.setLayout(gbl_results_grid_panel);
+		
+		JLabel result_title_image_label = new JLabel("");
+		result_title_image_label.setHorizontalAlignment(JLabel.CENTER);
+		result_title_image_label.setVerticalAlignment(JLabel.CENTER);
+		ImageIcon netflix_quote = new ImageIcon(new ImageIcon("netflix_quote.jpg").getImage().getScaledInstance(300, 175, Image.SCALE_SMOOTH));
+		result_title_image_label.setIcon(netflix_quote);
+		
+		GridBagConstraints gbc_result_title_image_label = new GridBagConstraints();
+		gbc_result_title_image_label.insets = new Insets(0, 0, 5, 5);
+		gbc_result_title_image_label.gridx = 2;
+		gbc_result_title_image_label.gridy = 1;
+		results_grid_panel.add(result_title_image_label, gbc_result_title_image_label);
+		
+		JPanel sort_by_panel = new JPanel();
+		sort_by_panel.setBackground(new Color(255, 255, 255));
+		GridBagConstraints gbc_sort_by_panel = new GridBagConstraints();
+		gbc_sort_by_panel.insets = new Insets(0, 0, 5, 5);
+		gbc_sort_by_panel.fill = GridBagConstraints.BOTH;
+		gbc_sort_by_panel.gridx = 2;
+		gbc_sort_by_panel.gridy = 2;
+		results_grid_panel.add(sort_by_panel, gbc_sort_by_panel);
+		
+		JLabel sort_by_label = new JLabel("Sort By:");
+		sort_by_label.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		sort_by_panel.add(sort_by_label);
+		
+		JComboBox sort_by_combobox = new JComboBox();
+		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
+		sort_by_panel.add(sort_by_combobox);
+		
+		
+		JScrollPane results_scrollPane = new JScrollPane();
+		results_scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		results_scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		GridBagConstraints gbc_results_scrollPane = new GridBagConstraints();
+		gbc_results_scrollPane.insets = new Insets(0, 0, 0, 5);
+		gbc_results_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_results_scrollPane.gridx = 1;
+		gbc_results_scrollPane.gridy = 3;
+		gbc_results_scrollPane.gridwidth = 3;
+		results_scrollPane.getViewport().setBackground(Color.GRAY);
+		results_grid_panel.add(results_scrollPane, gbc_results_scrollPane);
+		
+		//JTextArea txtrLoremIpsumDolor = new JTextArea();
+		//txtrLoremIpsumDolor.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis eget libero et consequat. Sed imperdiet purus vel elementum dapibus. Integer eget libero imperdiet, mattis tellus vel, semper nunc. Donec congue sollicitudin risus vel ultricies. Sed malesuada euismod orci, ac tristique sem ornare at. Phasellus sit amet sem quis turpis mollis elementum sed vel metus. Vestibulum finibus at lacus ornare mollis. Phasellus a feugiat lacus, sed consectetur odio. Nulla tincidunt eu tellus et euismod. Suspendisse nisi erat, dignissim at egestas et, congue laoreet quam. Pellentesque in tortor suscipit, fermentum magna eu, fermentum nisi. Curabitur ut auctor metus.\n\nFusce consectetur tellus dolor, ut lacinia nisi eleifend ut. Nunc fermentum, eros ut mattis volutpat, tellus enim lobortis mi, a mattis nunc nisl sit amet quam. Sed facilisis lacus vitae leo pretium eleifend. Nullam pulvinar orci sed egestas bibendum. Pellentesque vel semper nisl, eu tempor purus. Fusce vestibulum sit amet leo eu bibendum. Phasellus ut nisl tincidunt est sodales lobortis. Integer neque tortor, posuere rhoncus tellus vel, tincidunt tincidunt elit. Aliquam nunc ante, varius sed turpis a, facilisis sollicitudin purus. Praesent eget imperdiet orci. Donec a semper urna, sit amet condimentum turpis.\n\nProin tempus consequat porttitor. Duis efficitur gravida libero, sit amet tincidunt erat pulvinar placerat. Nulla vel urna gravida, blandit diam in, euismod dui. Donec auctor vulputate arcu condimentum egestas. Nulla facilisi. Donec id nunc ac tellus pulvinar varius. Vestibulum consectetur posuere ante in fermentum. Fusce at vestibulum velit, id porta elit. Sed vel est porttitor, fringilla enim at, interdum orci. Etiam molestie eros lorem, et interdum justo auctor ullamcorper. Donec vitae tristique ipsum, et volutpat neque. Curabitur aliquam enim est, et lacinia ante cursus vitae. Ut arcu velit, commodo ac porta eu, mattis quis tellus. Mauris vel lacus ut ex eleifend pharetra hendrerit eget sapien. Nulla pharetra, risus vel sagittis iaculis, ligula sapien placerat lectus, suscipit placerat magna risus id massa.\n\nProin finibus porta sapien, cursus hendrerit elit mattis a. Integer sem sem, tempor sit amet urna at, fermentum consequat est. Nunc consequat metus feugiat porttitor consequat. Duis sit amet lorem sapien. Nunc id ex id dui semper accumsan at quis urna. Duis laoreet metus iaculis nibh consequat, et egestas magna porttitor. Cras in auctor augue. Sed purus metus, facilisis eget nunc id, lacinia viverra ligula. Nam nec turpis nunc. Mauris nec sagittis felis. Quisque quis dignissim nisi. Morbi a arcu quis massa fermentum fringilla vitae eget turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus euismod et mi non molestie. Aliquam erat volutpat.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sodales risus. Ut vestibulum eros id placerat iaculis. Morbi quis tempor ante. Curabitur sed lacinia est. Nulla facilisi. Vestibulum id pretium neque. Curabitur vel pellentesque dolor. Mauris porttitor risus a tellus fringilla, ut finibus enim tempor. Nunc ex velit, pellentesque in dui ac, dictum vehicula metus.");
+		//results_scrollPane.setColumnHeaderView(txtrLoremIpsumDolor);
+		
 		JPanel search_panel = new JPanel();
 		search_panel.setBounds(0, 0, 800, 500);
 		search_panel.setBackground(Color.BLACK);
@@ -97,26 +164,28 @@ public class HackflixMainGUI {
 		grid_panel.setBackground(Color.BLACK);
 		search_panel.add(grid_panel);
 		GridBagLayout gbl_grid_panel = new GridBagLayout();
-		gbl_grid_panel.columnWidths = new int[]{50, 100, 100, 100, 50, 50};
-		gbl_grid_panel.rowHeights = new int[]{100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0};
-		gbl_grid_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_grid_panel.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
+		gbl_grid_panel.columnWidths = new int[]{50, 100, 100, 100, 50};
+		gbl_grid_panel.rowHeights = new int[]{100, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0};
+		gbl_grid_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0};
+		gbl_grid_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
 		grid_panel.setLayout(gbl_grid_panel);
 		
-		JLabel title_label = new JLabel("");
-		GridBagConstraints gbc_title_label = new GridBagConstraints();
-		gbc_title_label.insets = new Insets(0, 0, 5, 5);
-		gbc_title_label.gridx = 2;
-		gbc_title_label.gridy = 1;
-		grid_panel.add(title_label, gbc_title_label);
-		title_label.setIcon(new ImageIcon("movies.png"));
+		JLabel movie_or_tv_title_label = new JLabel("");
+		GridBagConstraints gbc_movie_or_tv_title_label = new GridBagConstraints();
+		gbc_movie_or_tv_title_label.insets = new Insets(0, 0, 5, 5);
+		//gbc_title_label.insets = new Insets(0, 0, 5, 5);
+		gbc_movie_or_tv_title_label.gridx = 1;
+		gbc_movie_or_tv_title_label.gridy = 1;
+		gbc_movie_or_tv_title_label.gridwidth = 3;
+		grid_panel.add(movie_or_tv_title_label, gbc_movie_or_tv_title_label);
+		movie_or_tv_title_label.setIcon(new ImageIcon("movies.png"));
 		
 		JLabel genre_label = new JLabel("Genre");
 		genre_label.setForeground(Color.WHITE);
 		GridBagConstraints gbc_genre_label = new GridBagConstraints();
 		gbc_genre_label.insets = new Insets(0, 0, 5, 5);
 		gbc_genre_label.gridx = 1;
-		gbc_genre_label.gridy = 3;
+		gbc_genre_label.gridy = 4;
 		grid_panel.add(genre_label, gbc_genre_label);
 		
 		JLabel release_year_label = new JLabel("Release Year");
@@ -124,7 +193,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_release_year_label = new GridBagConstraints();
 		gbc_release_year_label.insets = new Insets(0, 0, 5, 5);
 		gbc_release_year_label.gridx = 2;
-		gbc_release_year_label.gridy = 3;
+		gbc_release_year_label.gridy = 4;
 		grid_panel.add(release_year_label, gbc_release_year_label);
 		
 		JLabel rating_label = new JLabel("Rating");
@@ -132,37 +201,40 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_rating_label = new GridBagConstraints();
 		gbc_rating_label.insets = new Insets(0, 0, 5, 5);
 		gbc_rating_label.gridx = 3;
-		gbc_rating_label.gridy = 3;
+		gbc_rating_label.gridy = 4;
 		grid_panel.add(rating_label, gbc_rating_label);
 		
 		JComboBox genre_combobox = new JComboBox();
+		genre_combobox.setBackground(new Color(0, 0, 0));
 		genre_label.setLabelFor(genre_combobox);
 		genre_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
 		GridBagConstraints gbc_genre_combobox = new GridBagConstraints();
 		gbc_genre_combobox.fill = GridBagConstraints.VERTICAL;
 		gbc_genre_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_genre_combobox.gridx = 1;
-		gbc_genre_combobox.gridy = 4;
+		gbc_genre_combobox.gridy = 5;
 		grid_panel.add(genre_combobox, gbc_genre_combobox);
 		
 		JComboBox releaseyear_combobox = new JComboBox();
+		releaseyear_combobox.setBackground(new Color(0, 0, 0));
 		release_year_label.setLabelFor(releaseyear_combobox);
 		releaseyear_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
 		GridBagConstraints gbc_releaseyear_combobox = new GridBagConstraints();
 		gbc_releaseyear_combobox.fill = GridBagConstraints.BOTH;
 		gbc_releaseyear_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_releaseyear_combobox.gridx = 2;
-		gbc_releaseyear_combobox.gridy = 4;
+		gbc_releaseyear_combobox.gridy = 5;
 		grid_panel.add(releaseyear_combobox, gbc_releaseyear_combobox);
 		
 		JComboBox rating_combobox = new JComboBox();
+		rating_combobox.setBackground(new Color(0, 0, 0));
 		rating_label.setLabelFor(rating_combobox);
 		rating_combobox.setModel(new DefaultComboBoxModel(new String[] {"Combobox"}));
 		GridBagConstraints gbc_rating_combobox = new GridBagConstraints();
 		gbc_rating_combobox.fill = GridBagConstraints.BOTH;
 		gbc_rating_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_rating_combobox.gridx = 3;
-		gbc_rating_combobox.gridy = 4;
+		gbc_rating_combobox.gridy = 5;
 		grid_panel.add(rating_combobox, gbc_rating_combobox);
 		
 		JLabel director_label = new JLabel("Director");
@@ -170,7 +242,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_director_label = new GridBagConstraints();
 		gbc_director_label.insets = new Insets(0, 0, 5, 5);
 		gbc_director_label.gridx = 1;
-		gbc_director_label.gridy = 6;
+		gbc_director_label.gridy = 7;
 		grid_panel.add(director_label, gbc_director_label);
 		
 		JLabel cast_label = new JLabel("Cast");
@@ -178,7 +250,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_cast_label = new GridBagConstraints();
 		gbc_cast_label.insets = new Insets(0, 0, 5, 5);
 		gbc_cast_label.gridx = 2;
-		gbc_cast_label.gridy = 6;
+		gbc_cast_label.gridy = 7;
 		grid_panel.add(cast_label, gbc_cast_label);
 		
 		JLabel duration_label = new JLabel("Duration");
@@ -186,80 +258,82 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_duration_label = new GridBagConstraints();
 		gbc_duration_label.insets = new Insets(0, 0, 5, 5);
 		gbc_duration_label.gridx = 3;
-		gbc_duration_label.gridy = 6;
+		gbc_duration_label.gridy = 7;
 		grid_panel.add(duration_label, gbc_duration_label);
 		
 		JComboBox director_combobox = new JComboBox();
+		director_combobox.setBackground(new Color(0, 0, 0));
 		director_label.setLabelFor(director_combobox);
 		director_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
 		GridBagConstraints gbc_director_combobox = new GridBagConstraints();
 		gbc_director_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_director_combobox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_director_combobox.gridx = 1;
-		gbc_director_combobox.gridy = 7;
+		gbc_director_combobox.gridy = 8;
 		grid_panel.add(director_combobox, gbc_director_combobox);
 		
 		JComboBox cast_combobox = new JComboBox();
+		cast_combobox.setBackground(new Color(0, 0, 0));
 		cast_label.setLabelFor(cast_combobox);
 		cast_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
 		GridBagConstraints gbc_cast_combobox = new GridBagConstraints();
 		gbc_cast_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_cast_combobox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cast_combobox.gridx = 2;
-		gbc_cast_combobox.gridy = 7;
+		gbc_cast_combobox.gridy = 8;
 		grid_panel.add(cast_combobox, gbc_cast_combobox);
 		
 		JComboBox duration_combobox = new JComboBox();
+		duration_combobox.setBackground(new Color(0, 0, 0));
 		duration_label.setLabelFor(duration_combobox);
 		duration_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
 		GridBagConstraints gbc_duration_combobox = new GridBagConstraints();
 		gbc_duration_combobox.fill = GridBagConstraints.BOTH;
 		gbc_duration_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_duration_combobox.gridx = 3;
-		gbc_duration_combobox.gridy = 7;
+		gbc_duration_combobox.gridy = 8;
 		grid_panel.add(duration_combobox, gbc_duration_combobox);
 		
-		JLabel keyword_label = new JLabel("Keyword");
-		keyword_label.setForeground(Color.WHITE);
-		GridBagConstraints gbc_keyword_label = new GridBagConstraints();
-		gbc_keyword_label.insets = new Insets(0, 0, 5, 5);
-		gbc_keyword_label.gridx = 2;
-		gbc_keyword_label.gridy = 9;
-		grid_panel.add(keyword_label, gbc_keyword_label);
+		JLabel country_label = new JLabel("Country");
+		country_label.setForeground(Color.WHITE);
+		GridBagConstraints gbc_country_label = new GridBagConstraints();
+		gbc_country_label.insets = new Insets(0, 0, 5, 5);
+		gbc_country_label.gridx = 2;
+		gbc_country_label.gridy = 10;
+		grid_panel.add(country_label, gbc_country_label);
 		
-		txtTypeKeywordHere = new JTextField();
-		keyword_label.setLabelFor(txtTypeKeywordHere);
-		txtTypeKeywordHere.setText("Type Keyword Here");
-		GridBagConstraints gbc_txtTypeKeywordHere = new GridBagConstraints();
-		gbc_txtTypeKeywordHere.insets = new Insets(0, 0, 5, 5);
-		gbc_txtTypeKeywordHere.fill = GridBagConstraints.BOTH;
-		gbc_txtTypeKeywordHere.gridx = 2;
-		gbc_txtTypeKeywordHere.gridy = 10;
-		grid_panel.add(txtTypeKeywordHere, gbc_txtTypeKeywordHere);
-		txtTypeKeywordHere.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Find my recs!");
-		btnNewButton.setBackground(new Color(128, 0, 0));
-		btnNewButton.setForeground(new Color(255, 255, 255));
-		btnNewButton.setBackground(Color.RED);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton find_my_rec_button = new JButton("Find my recs!");
+		find_my_rec_button.setBackground(new Color(128, 0, 0));
+		find_my_rec_button.setForeground(new Color(255, 255, 255));
+		find_my_rec_button.setBackground(Color.RED);
+		find_my_rec_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				search_panel.setVisible(false);
+				results_panel.setVisible(true);
+				
+				frmHackflix.setSize(600, 800);
+				frmHackflix.setTitle("Hackflix - Search Results");
+				
+				/*
 				final JDialog dialog = new JDialog();
 				dialog.setAlwaysOnTop(true);    
-				JOptionPane.showMessageDialog(dialog, "Search button pressed!");
+				JOptionPane.showMessageDialog(dialog, "Search button pressed!"); */
 			}
 		});
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 2;
-		gbc_btnNewButton.gridy = 12;
-		grid_panel.add(btnNewButton, gbc_btnNewButton);
 		
-		JPanel results_panel = new JPanel();
-		results_panel.setBounds(0, 0, 800, 500);
-		results_panel.setBackground(Color.BLACK);
-		panel.add(results_panel);
-		results_panel.setVisible(false);
+		JComboBox cast_combobox_1 = new JComboBox();
+		cast_combobox_1.setBackground(new Color(0, 0, 0));
+		GridBagConstraints gbc_cast_combobox_1 = new GridBagConstraints();
+		gbc_cast_combobox_1.insets = new Insets(0, 0, 5, 5);
+		gbc_cast_combobox_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_cast_combobox_1.gridx = 2;
+		gbc_cast_combobox_1.gridy = 11;
+		grid_panel.add(cast_combobox_1, gbc_cast_combobox_1);
+		GridBagConstraints gbc_find_my_rec_button = new GridBagConstraints();
+		gbc_find_my_rec_button.insets = new Insets(0, 0, 0, 5);
+		gbc_find_my_rec_button.gridx = 2;
+		gbc_find_my_rec_button.gridy = 13;
+		grid_panel.add(find_my_rec_button, gbc_find_my_rec_button);
 		
 		JPanel main_panel = new JPanel();
 		main_panel.setBounds(0, 0, 800, 500);
@@ -267,17 +341,17 @@ public class HackflixMainGUI {
 		main_panel.setPreferredSize(new Dimension(800, 500));
 		panel.add(main_panel);
 		
-		JPanel main_panel2 = new JPanel();
-		main_panel.add(main_panel2);
-		main_panel2.setBounds(0, 0, 800, 500);
-		main_panel2.setBackground(Color.BLACK);
-		main_panel2.setPreferredSize(new Dimension(800, 500));
-		GridBagLayout gbl_main_panel2 = new GridBagLayout();
-		gbl_main_panel2.rowWeights = new double[]{0.0, 0.7, 0.2, 0.5, 1.0, 1.0, 0.0};
-		gbl_main_panel2.columnWeights = new double[]{0.0, 1.0, 0.0};
-		gbl_main_panel2.columnWidths = new int[]{100, 100, 100};
-		gbl_main_panel2.rowHeights = new int[]{100, 137, 30, 50, 0, 50, 100};
-		main_panel2.setLayout(gbl_main_panel2);
+		JPanel main_grid_panel = new JPanel();
+		main_panel.add(main_grid_panel);
+		main_grid_panel.setBounds(0, 0, 800, 500);
+		main_grid_panel.setBackground(Color.BLACK);
+		main_grid_panel.setPreferredSize(new Dimension(800, 500));
+		GridBagLayout gbl_main_grid_panel = new GridBagLayout();
+		gbl_main_grid_panel.rowWeights = new double[]{0.0, 0.7, 0.2, 0.5, 1.0, 1.0, 0.0};
+		gbl_main_grid_panel.columnWeights = new double[]{0.0, 1.0, 0.0};
+		gbl_main_grid_panel.columnWidths = new int[]{100, 100, 100};
+		gbl_main_grid_panel.rowHeights = new int[]{100, 137, 30, 50, 0, 50, 100};
+		main_grid_panel.setLayout(gbl_main_grid_panel);
 		
 		JPanel hackflix_logo = new JPanel();
 		hackflix_logo.setBackground(Color.BLACK);
@@ -287,15 +361,15 @@ public class HackflixMainGUI {
 		gbc_hackflix_logo.fill = GridBagConstraints.BOTH;
 		gbc_hackflix_logo.gridx = 1;
 		gbc_hackflix_logo.gridy = 1;
-		main_panel2.add(hackflix_logo, gbc_hackflix_logo);
+		main_grid_panel.add(hackflix_logo, gbc_hackflix_logo);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(145, 16, 323, 96);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon("hackflix.png").getImage().getScaledInstance(330, 100, Image.SCALE_DEFAULT));
-		lblNewLabel.setIcon(imageIcon);
+		JLabel hackflix_logo_jlabel = new JLabel("");
+		hackflix_logo_jlabel.setBounds(145, 16, 323, 96);
+		hackflix_logo_jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("hackflix.png").getImage().getScaledInstance(330, 100, Image.SCALE_SMOOTH));
+		hackflix_logo_jlabel.setIcon(imageIcon);
 		
-		hackflix_logo.add(lblNewLabel);
+		hackflix_logo.add(hackflix_logo_jlabel);
 		
 		JPanel hackflix_quote = new JPanel();
 		hackflix_quote.setBackground(Color.BLACK);
@@ -304,7 +378,7 @@ public class HackflixMainGUI {
 		gbc_hackflix_quote.fill = GridBagConstraints.BOTH;
 		gbc_hackflix_quote.gridx = 1;
 		gbc_hackflix_quote.gridy = 2;
-		main_panel2.add(hackflix_quote, gbc_hackflix_quote);
+		main_grid_panel.add(hackflix_quote, gbc_hackflix_quote);
 		
 		JLabel hackflix_string = new JLabel("Find your next quarantine entertainment.");
 		hackflix_string.setFont(new Font("Gill Sans", Font.PLAIN, 16));
@@ -318,7 +392,7 @@ public class HackflixMainGUI {
 		gbc_main_buttons.fill = GridBagConstraints.BOTH;
 		gbc_main_buttons.gridx = 1;
 		gbc_main_buttons.gridy = 3;
-		main_panel2.add(main_buttons, gbc_main_buttons);
+		main_grid_panel.add(main_buttons, gbc_main_buttons);
 		main_buttons.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton movie_button = new JButton("Movies");
@@ -328,8 +402,9 @@ public class HackflixMainGUI {
 			public void mouseClicked(MouseEvent e) {
 				// add action here
 				movies = true;
+				frmHackflix.setTitle("Hackflix - Movie Search");
 				ImageIcon typeFont = new ImageIcon(new ImageIcon("movies.png").getImage().getScaledInstance(125, 50, Image.SCALE_SMOOTH));
-				title_label.setIcon(typeFont);
+				movie_or_tv_title_label.setIcon(typeFont);
 				main_panel.setVisible(false);
 				search_panel.setVisible(true);
 				
@@ -344,8 +419,9 @@ public class HackflixMainGUI {
 			public void mouseClicked(MouseEvent e) {
 				// add action here
 				tvshow = true;
-				ImageIcon typeFont = new ImageIcon(new ImageIcon("tvshows.png").getImage().getScaledInstance(125, 50, Image.SCALE_SMOOTH));
-				title_label.setIcon(typeFont);
+				frmHackflix.setTitle("Hackflix - TV Show Search");
+				ImageIcon typeFont = new ImageIcon(new ImageIcon("tvshows.png").getImage().getScaledInstance(175, 50, Image.SCALE_SMOOTH));
+				movie_or_tv_title_label.setIcon(typeFont);
 				main_panel.setVisible(false);
 				search_panel.setVisible(true);
 				
@@ -359,8 +435,9 @@ public class HackflixMainGUI {
 			public void mouseClicked(MouseEvent e) {
 				// add action here
 				both = true;
-				ImageIcon typeFont = new ImageIcon(new ImageIcon("moviesAndTV.png").getImage().getScaledInstance(125, 50, Image.SCALE_SMOOTH));
-				title_label.setIcon(typeFont);
+				frmHackflix.setTitle("Hackflix - Movies & TV Show Search");
+				ImageIcon typeFont = new ImageIcon(new ImageIcon("moviesAndTV.png").getImage().getScaledInstance(275, 50, Image.SCALE_SMOOTH));
+				movie_or_tv_title_label.setIcon(typeFont);
 				main_panel.setVisible(false);
 				search_panel.setVisible(true);
 				
@@ -376,7 +453,7 @@ public class HackflixMainGUI {
 		gbc_quick_search.fill = GridBagConstraints.BOTH;
 		gbc_quick_search.gridx = 1;
 		gbc_quick_search.gridy = 4;
-		main_panel2.add(quick_search, gbc_quick_search);
+		main_grid_panel.add(quick_search, gbc_quick_search);
 		quick_search.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		txtQuickSearch = new JTextField();
