@@ -42,6 +42,8 @@ public class NetflixCSVReader {
 	    parserSettings.setSkipEmptyLines(true); // skip empty lines
 	    parserSettings.selectIndexes(1, 2, 3, 4, 5, 7, 8, 9, 10, 11); // only parse these column numbers
 	    parserSettings.setColumnReorderingEnabled(false); // retain csv column order
+	    parserSettings.setHeaderExtractionEnabled(true);
+	    parserSettings.setLineSeparatorDetectionEnabled(true);
 	    
 	    /*
 	    parserSettings.setRowProcessor(rowProcessor);
@@ -59,12 +61,6 @@ public class NetflixCSVReader {
 	    
 	    parser.beginParsing(getReader("netflix_titles.csv"));
 	    
-	    // Use these ArrayLists to store fields with multiple values
-    	ArrayList<String> director = new ArrayList<String>();
-    	ArrayList<String> cast = new ArrayList<String>();
-    	ArrayList<String> country = new ArrayList<String>();
-    	ArrayList<String> genre = new ArrayList<String>();
-    	
     	Record record;
     	
     	// iterate through csv line by line using Record class and parser
@@ -77,16 +73,45 @@ public class NetflixCSVReader {
 	    	else {
 	    		// remove any non-numerical char from "duration" field
 		    	String durationNoChar = record.getString("duration");
-		    	durationNoChar = durationNoChar.replaceAll("[^\\d.]", "");
+		    	durationNoChar = durationNoChar.replaceAll("[^\\d.]", "");	
 		    	
+		    	String directorString = record.getString("director");
+		    	String castString = record.getString("cast");
+		    	String countryString = record.getString("country");
+		    	String listedinString = record.getString("listed_in");
+		    	String genreString = record.getString("description");
+		    	
+		    	List<String> director = new ArrayList<String>();
+		    	if (directorString != null) {
+			    	director = Arrays.asList(directorString.split(", "));
+		    	}
+		    	
+		    	List<String> cast = new ArrayList<String>();
+		    	if (castString != null) {
+			    	cast = Arrays.asList(castString.split(", "));
+		    	}
+		    	
+		    	List<String> country = new ArrayList<String>();
+		    	if (countryString != null) {
+		    		country = Arrays.asList(countryString.split(", "));
+		    	}
+		    	
+		    	// Temporarily commented while testing
+		    	/*
+		    	List<String> genre = new ArrayList<String>();
+		    	if (genreString != null) {
+			    	genre = Arrays.asList(genreString.split(", "));
+		    	} */
+		    		    	
 		    	// create NetflixData objects
+		    	/*
 		    	NetflixData nfd = new NetflixData(record.getString("type"), record.getString("title"), director, 
 		    			cast, country, Integer.valueOf(record.getString("release_year")), record.getString("rating"),
-		    			Integer.valueOf(durationNoChar), genre, "duration"); 
+		    			Integer.valueOf(durationNoChar), genre, "test"); */
 		    	
-		    	System.out.println(nfd.toString()); // test print
+		    	//System.out.println(nfd.toString()); // test print
 		    	
-		    	allNetflixData.add(nfd); // add NetflixData object to list
+		    	//allNetflixData.add(nfd); // add NetflixData object to list
 	    	}
 	        
 	    }

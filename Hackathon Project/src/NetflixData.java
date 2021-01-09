@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A class that represents a single movie or TV Show on Netflix.
@@ -27,17 +28,17 @@ public class NetflixData {
 	/**
 	 * The directors of this movie or tv show, if any are listed.
 	 */
-	ArrayList<String> director = new ArrayList<String>();;
+	List<String> director = new ArrayList<String>();;
 	
 	/**
 	 * The cast of this movie or tv show, if any are listed.
 	 */
-	ArrayList<String> cast = new ArrayList<String>();;
+	List<String> cast = new ArrayList<String>();;
 	
 	/**
 	 * The country or countries where the movie or tv show was produced.
 	 */
-	ArrayList<String> country = new ArrayList<String>();;
+	List<String> country = new ArrayList<String>();;
 	
 	/**
 	 * The year this movie or TV show was released.
@@ -57,7 +58,7 @@ public class NetflixData {
 	/**
 	 * All the categories this movie or tv show is listed under.
 	 */
-	ArrayList<String> genre = new ArrayList<String>();;
+	List<String> genre = new ArrayList<String>();;
 	
 	/**
 	 * A description of the movie or TV show.
@@ -79,8 +80,8 @@ public class NetflixData {
 	 * @param genre of the content.
 	 * @param description of the content.
 	 */
-	public NetflixData(String type, String title, ArrayList<String> director, ArrayList<String> cast,
-			ArrayList<String> country, int releaseyear, String rating, int duration, ArrayList<String> genre,
+	public NetflixData(String type, String title, List<String> director, List<String> cast,
+			List<String> country, int releaseyear, String rating, int duration, List<String> genre,
 			String description) {
 		//this.showid = showid;
 		this.type = type;
@@ -121,21 +122,21 @@ public class NetflixData {
 	/**
 	 * @return the director
 	 */
-	public ArrayList<String> getDirector() {
+	public List<String> getDirector() {
 		return director;
 	}
 
 	/**
 	 * @return the cast
 	 */
-	public ArrayList<String> getCast() {
+	public List<String> getCast() {
 		return cast;
 	}
 
 	/**
 	 * @return the country
 	 */
-	public ArrayList<String> getCountry() {
+	public List<String> getCountry() {
 		return country;
 	}
 
@@ -163,7 +164,7 @@ public class NetflixData {
 	/**
 	 * @return the genre
 	 */
-	public ArrayList<String> getGenre() {
+	public List<String> getGenre() {
 		return genre;
 	}
 
@@ -200,21 +201,21 @@ public class NetflixData {
 	/**
 	 * @param director the director to set
 	 */
-	public void setDirector(ArrayList<String> director) {
+	public void setDirector(List<String> director) {
 		this.director = director;
 	}
 
 	/**
 	 * @param cast the cast to set
 	 */
-	public void setCast(ArrayList<String> cast) {
+	public void setCast(List<String> cast) {
 		this.cast = cast;
 	}
 
 	/**
 	 * @param country the country to set
 	 */
-	public void setCountry(ArrayList<String> country) {
+	public void setCountry(List<String> country) {
 		this.country = country;
 	}
 
@@ -242,7 +243,7 @@ public class NetflixData {
 	/**
 	 * @param genre the genre to set
 	 */
-	public void setGenre(ArrayList<String> genre) {
+	public void setGenre(List<String> genre) {
 		this.genre = genre;
 	}
 
