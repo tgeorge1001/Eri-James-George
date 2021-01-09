@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Map;
 
 import javax.swing.Action;
 import javax.swing.JComboBox;
@@ -53,12 +54,16 @@ public class HackflixMainGUI {
 	boolean both = false;
 	
 	protected NetflixSearch searcher;
+	NetflixSearchSelection nss; 
+	private Map<String, String> searchSelection;
 
 	/**
 	 * Create the GUI application.
 	 */
 	public HackflixMainGUI(NetflixSearch searcher) {
 		this.searcher = searcher;
+		nss = new NetflixSearchSelection();
+		searchSelection = nss.getInitializedMap();
 		initialize();
 	}
 
@@ -180,6 +185,7 @@ public class HackflixMainGUI {
 		genre_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(genre_combobox.getSelectedItem());
+				searchSelection.put("Genre", selection);
 			}
 		});
 		grid_panel.add(genre_combobox, gbc_genre_combobox);
@@ -197,6 +203,7 @@ public class HackflixMainGUI {
 		releaseyear_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(releaseyear_combobox.getSelectedItem());
+				searchSelection.put("Release Year", selection);
 			}
 		});
 		grid_panel.add(releaseyear_combobox, gbc_releaseyear_combobox);
@@ -214,6 +221,7 @@ public class HackflixMainGUI {
 		rating_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(rating_combobox.getSelectedItem());
+				searchSelection.put("Rating", selection);
 			}
 		});
 		grid_panel.add(rating_combobox, gbc_rating_combobox);
@@ -255,6 +263,7 @@ public class HackflixMainGUI {
 		director_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(director_combobox.getSelectedItem());
+				searchSelection.put("Director", selection);
 			}
 		});
 		grid_panel.add(director_combobox, gbc_director_combobox);
@@ -272,6 +281,7 @@ public class HackflixMainGUI {
 		cast_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(cast_combobox.getSelectedItem());
+				searchSelection.put("Cast", selection);
 			}
 		});
 		grid_panel.add(cast_combobox, gbc_cast_combobox);
@@ -289,6 +299,7 @@ public class HackflixMainGUI {
 		duration_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(duration_combobox.getSelectedItem());
+				searchSelection.put("Duration", selection);
 			}
 		});
 		grid_panel.add(duration_combobox, gbc_duration_combobox);
@@ -310,9 +321,11 @@ public class HackflixMainGUI {
 			public void actionPerformed(ActionEvent e) {
 				search_panel.setVisible(false);
 				results_panel.setVisible(true);
+				nss.printMap(searchSelection);
 				
 				frmHackflix.setSize(600, 800);
 				frmHackflix.setTitle("Hackflix - Search Results");
+				
 				
 				/*
 				final JDialog dialog = new JDialog();
@@ -339,6 +352,7 @@ public class HackflixMainGUI {
 		country_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selection = String.valueOf(country_combobox.getSelectedItem());
+				searchSelection.put("Country", selection);
 			}
 		});
 		grid_panel.add(find_my_rec_button, gbc_find_my_rec_button);
@@ -456,9 +470,10 @@ public class HackflixMainGUI {
 				movies = false;
 				tvshow = false;
 				both = false;
+				searchSelection = nss.getInitializedMap(); // clear map
 				
 				frmHackflix.setSize(800, 500);
-				frmHackflix.setTitle("Hackflix - Search Results");
+				frmHackflix.setTitle("Hackflix");
 				
 				/*
 				final JDialog dialog = new JDialog();
@@ -541,6 +556,8 @@ public class HackflixMainGUI {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				movies = true;
+				searchSelection.put("Type", "Movie");
+				searchSelection.put("Keyword", "---");
 				frmHackflix.setTitle("Hackflix - Movie Search");
 				ImageIcon moviesFont = new ImageIcon(new ImageIcon("movies.png").getImage().getScaledInstance(175, 75, Image.SCALE_SMOOTH));
 				movie_or_tv_title_label.setIcon(moviesFont);
@@ -557,6 +574,8 @@ public class HackflixMainGUI {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				tvshow = true;
+				searchSelection.put("Type", "TV Show");
+				searchSelection.put("Keyword", "---");
 				frmHackflix.setTitle("Hackflix - TV Show Search");
 				ImageIcon tvShowFont = new ImageIcon(new ImageIcon("tvshows.png").getImage().getScaledInstance(200, 60, Image.SCALE_SMOOTH));
 				movie_or_tv_title_label.setIcon(tvShowFont);
@@ -572,6 +591,8 @@ public class HackflixMainGUI {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				both = true;
+				searchSelection.put("Type", "Both");
+				searchSelection.put("Keyword", "---");
 				frmHackflix.setTitle("Hackflix - Movies & TV Show Search");
 				ImageIcon moviesAndTVShowFont = new ImageIcon(new ImageIcon("moviesAndTV.png").getImage().getScaledInstance(275, 45, Image.SCALE_SMOOTH));
 				movie_or_tv_title_label.setIcon(moviesAndTVShowFont);
@@ -599,11 +620,21 @@ public class HackflixMainGUI {
 			public void actionPerformed(ActionEvent e) {
 				main_panel.setVisible(false);
 				results_panel.setVisible(true);
+				movies = false;
+				tvshow = false;
+				both = false;
 				
 				String textSearchString = txtQuickSearch.getText();
+				searchSelection.put("Keyword", textSearchString);
+				nss.printMap(searchSelection);
+				
+				frmHackflix.setSize(600, 800);
+				frmHackflix.setTitle("Hackflix - Search Results");
+				
+				/*
 				final JDialog dialog = new JDialog();
 				dialog.setAlwaysOnTop(true);    
-				JOptionPane.showMessageDialog(dialog, "Quick search used!");
+				JOptionPane.showMessageDialog(dialog, "Quick search used!");*/
 			}
 		});
 		quick_search.add(txtQuickSearch);
