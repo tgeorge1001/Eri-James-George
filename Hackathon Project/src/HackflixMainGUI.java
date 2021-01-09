@@ -115,24 +115,39 @@ public class HackflixMainGUI {
 		search_panel.add(grid_panel);
 		GridBagLayout gbl_grid_panel = new GridBagLayout();
 		gbl_grid_panel.columnWidths = new int[]{50, 100, 100, 100, 50};
-		gbl_grid_panel.rowHeights = new int[]{100, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0};
+		gbl_grid_panel.rowHeights = new int[]{75, -10, 20, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 0};
 		gbl_grid_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0};
-		gbl_grid_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
+		gbl_grid_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
 		grid_panel.setLayout(gbl_grid_panel);
 		
 		GridBagConstraints gbc_movie_or_tv_title_label = new GridBagConstraints();
 		gbc_movie_or_tv_title_label.insets = new Insets(0, 0, 5, 5);
-		gbc_movie_or_tv_title_label.gridx = 1;
+		gbc_movie_or_tv_title_label.gridx = 2;
 		gbc_movie_or_tv_title_label.gridy = 1;
-		gbc_movie_or_tv_title_label.gridwidth = 3;
+		gbc_movie_or_tv_title_label.gridwidth = 1;
 		grid_panel.add(movie_or_tv_title_label, gbc_movie_or_tv_title_label);
+		
+		JPanel title_quote = new JPanel();
+		title_quote.setBackground(Color.BLACK);
+		GridBagConstraints gbc_title_quote = new GridBagConstraints();
+		gbc_title_quote.insets = new Insets(0, 0, 5, 5);
+		gbc_title_quote.fill = GridBagConstraints.VERTICAL;
+		gbc_title_quote.gridx = 2;
+		gbc_title_quote.gridy = 2;
+		gbc_movie_or_tv_title_label.gridwidth = 3;
+		
+		JLabel title_string = new JLabel("Grab your popcorn; it's time to chill.");
+		title_string.setFont(new Font("Gill Sans", Font.PLAIN, 14));
+		title_string.setForeground(Color.WHITE);
+		title_quote.add(title_string);
+		grid_panel.add(title_quote, gbc_title_quote);
 		
 		JLabel genre_label = new JLabel("Genre");
 		genre_label.setForeground(Color.WHITE);
 		GridBagConstraints gbc_genre_label = new GridBagConstraints();
 		gbc_genre_label.insets = new Insets(0, 0, 5, 5);
 		gbc_genre_label.gridx = 1;
-		gbc_genre_label.gridy = 4;
+		gbc_genre_label.gridy = 5;
 		grid_panel.add(genre_label, gbc_genre_label);
 		
 		JLabel release_year_label = new JLabel("Release Year");
@@ -140,7 +155,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_release_year_label = new GridBagConstraints();
 		gbc_release_year_label.insets = new Insets(0, 0, 5, 5);
 		gbc_release_year_label.gridx = 2;
-		gbc_release_year_label.gridy = 4;
+		gbc_release_year_label.gridy = 5;
 		grid_panel.add(release_year_label, gbc_release_year_label);
 		
 		JLabel rating_label = new JLabel("Rating");
@@ -148,7 +163,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_rating_label = new GridBagConstraints();
 		gbc_rating_label.insets = new Insets(0, 0, 5, 5);
 		gbc_rating_label.gridx = 3;
-		gbc_rating_label.gridy = 4;
+		gbc_rating_label.gridy = 5;
 		grid_panel.add(rating_label, gbc_rating_label);
 		
 		JComboBox genre_combobox = new JComboBox();
@@ -158,7 +173,7 @@ public class HackflixMainGUI {
 		gbc_genre_combobox.fill = GridBagConstraints.VERTICAL;
 		gbc_genre_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_genre_combobox.gridx = 1;
-		gbc_genre_combobox.gridy = 5;
+		gbc_genre_combobox.gridy = 6;
 		genre_combobox.setForeground(Color.BLACK);
 		genre_combobox.setBackground(Color.GRAY);
 		genre_combobox.addActionListener(new ActionListener() {
@@ -175,7 +190,7 @@ public class HackflixMainGUI {
 		gbc_releaseyear_combobox.fill = GridBagConstraints.BOTH;
 		gbc_releaseyear_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_releaseyear_combobox.gridx = 2;
-		gbc_releaseyear_combobox.gridy = 5;
+		gbc_releaseyear_combobox.gridy = 6;
 		releaseyear_combobox.setForeground(Color.BLACK);
 		releaseyear_combobox.setBackground(Color.GRAY);
 		releaseyear_combobox.addActionListener(new ActionListener() {
@@ -192,7 +207,7 @@ public class HackflixMainGUI {
 		gbc_rating_combobox.fill = GridBagConstraints.BOTH;
 		gbc_rating_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_rating_combobox.gridx = 3;
-		gbc_rating_combobox.gridy = 5;
+		gbc_rating_combobox.gridy = 6;
 		rating_combobox.setForeground(Color.BLACK);
 		rating_combobox.setBackground(Color.GRAY);
 		rating_combobox.addActionListener(new ActionListener() {
@@ -207,7 +222,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_director_label = new GridBagConstraints();
 		gbc_director_label.insets = new Insets(0, 0, 5, 5);
 		gbc_director_label.gridx = 1;
-		gbc_director_label.gridy = 7;
+		gbc_director_label.gridy = 8;
 		grid_panel.add(director_label, gbc_director_label);
 		
 		JLabel cast_label = new JLabel("Cast");
@@ -215,7 +230,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_cast_label = new GridBagConstraints();
 		gbc_cast_label.insets = new Insets(0, 0, 5, 5);
 		gbc_cast_label.gridx = 2;
-		gbc_cast_label.gridy = 7;
+		gbc_cast_label.gridy = 8;
 		grid_panel.add(cast_label, gbc_cast_label);
 		
 		JLabel duration_label = new JLabel("Duration");
@@ -223,7 +238,7 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_duration_label = new GridBagConstraints();
 		gbc_duration_label.insets = new Insets(0, 0, 5, 5);
 		gbc_duration_label.gridx = 3;
-		gbc_duration_label.gridy = 7;
+		gbc_duration_label.gridy = 8;
 		grid_panel.add(duration_label, gbc_duration_label);
 		
 		JComboBox director_combobox = new JComboBox();
@@ -233,7 +248,7 @@ public class HackflixMainGUI {
 		gbc_director_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_director_combobox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_director_combobox.gridx = 1;
-		gbc_director_combobox.gridy = 8;
+		gbc_director_combobox.gridy = 9;
 		director_combobox.setForeground(Color.BLACK);
 		director_combobox.setBackground(Color.GRAY);
 		director_combobox.addActionListener(new ActionListener() {
@@ -250,7 +265,7 @@ public class HackflixMainGUI {
 		gbc_cast_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_cast_combobox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cast_combobox.gridx = 2;
-		gbc_cast_combobox.gridy = 8;
+		gbc_cast_combobox.gridy = 9;
 		cast_combobox.setForeground(Color.BLACK);
 		cast_combobox.setBackground(Color.GRAY);
 		cast_combobox.addActionListener(new ActionListener() {
@@ -267,7 +282,7 @@ public class HackflixMainGUI {
 		gbc_duration_combobox.fill = GridBagConstraints.BOTH;
 		gbc_duration_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_duration_combobox.gridx = 3;
-		gbc_duration_combobox.gridy = 8;
+		gbc_duration_combobox.gridy = 9;
 		duration_combobox.setForeground(Color.BLACK);
 		duration_combobox.setBackground(Color.GRAY);
 		duration_combobox.addActionListener(new ActionListener() {
@@ -282,10 +297,11 @@ public class HackflixMainGUI {
 		GridBagConstraints gbc_country_label = new GridBagConstraints();
 		gbc_country_label.insets = new Insets(0, 0, 5, 5);
 		gbc_country_label.gridx = 2;
-		gbc_country_label.gridy = 10;
+		gbc_country_label.gridy = 11;
 		grid_panel.add(country_label, gbc_country_label);
 		
 		JButton find_my_rec_button = new JButton("Find my recs!");
+		find_my_rec_button.setFont(new Font("Gill Sans", Font.PLAIN, 15));
 		find_my_rec_button.setBackground(new Color(128, 0, 0));
 		find_my_rec_button.setForeground(new Color(255, 255, 255));
 		find_my_rec_button.setBackground(Color.RED);
@@ -311,12 +327,12 @@ public class HackflixMainGUI {
 		gbc_country_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_country_combobox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_country_combobox.gridx = 2;
-		gbc_country_combobox.gridy = 11;
+		gbc_country_combobox.gridy = 12;
 		grid_panel.add(country_combobox, gbc_country_combobox);
 		GridBagConstraints gbc_find_my_rec_button = new GridBagConstraints();
 		gbc_find_my_rec_button.insets = new Insets(0, 0, 0, 5);
 		gbc_find_my_rec_button.gridx = 2;
-		gbc_find_my_rec_button.gridy = 13;
+		gbc_find_my_rec_button.gridy = 15;
 		country_combobox.setForeground(Color.BLACK);
 		country_combobox.setBackground(Color.GRAY);
 		country_combobox.addActionListener(new ActionListener() {
@@ -519,7 +535,7 @@ public class HackflixMainGUI {
 			public void mouseClicked(MouseEvent e) {
 				movies = true;
 				frmHackflix.setTitle("Hackflix - Movie Search");
-				ImageIcon moviesFont = new ImageIcon(new ImageIcon("movies.png").getImage().getScaledInstance(125, 50, Image.SCALE_SMOOTH));
+				ImageIcon moviesFont = new ImageIcon(new ImageIcon("movies.png").getImage().getScaledInstance(175, 75, Image.SCALE_SMOOTH));
 				movie_or_tv_title_label.setIcon(moviesFont);
 				main_panel.setVisible(false);
 				search_panel.setVisible(true);
@@ -535,7 +551,7 @@ public class HackflixMainGUI {
 			public void mouseClicked(MouseEvent e) {
 				tvshow = true;
 				frmHackflix.setTitle("Hackflix - TV Show Search");
-				ImageIcon tvShowFont = new ImageIcon(new ImageIcon("tvshows.png").getImage().getScaledInstance(175, 50, Image.SCALE_SMOOTH));
+				ImageIcon tvShowFont = new ImageIcon(new ImageIcon("tvshows.png").getImage().getScaledInstance(200, 60, Image.SCALE_SMOOTH));
 				movie_or_tv_title_label.setIcon(tvShowFont);
 				main_panel.setVisible(false);
 				search_panel.setVisible(true);
@@ -550,7 +566,7 @@ public class HackflixMainGUI {
 			public void mouseClicked(MouseEvent e) {
 				both = true;
 				frmHackflix.setTitle("Hackflix - Movies & TV Show Search");
-				ImageIcon moviesAndTVShowFont = new ImageIcon(new ImageIcon("moviesAndTV.png").getImage().getScaledInstance(275, 50, Image.SCALE_SMOOTH));
+				ImageIcon moviesAndTVShowFont = new ImageIcon(new ImageIcon("moviesAndTV.png").getImage().getScaledInstance(275, 45, Image.SCALE_SMOOTH));
 				movie_or_tv_title_label.setIcon(moviesAndTVShowFont);
 				main_panel.setVisible(false);
 				search_panel.setVisible(true);
