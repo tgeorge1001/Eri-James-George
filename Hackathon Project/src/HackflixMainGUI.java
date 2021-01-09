@@ -116,7 +116,7 @@ public class HackflixMainGUI {
 		GridBagLayout gbl_grid_panel = new GridBagLayout();
 		gbl_grid_panel.columnWidths = new int[]{50, 100, 100, 100, 50};
 		gbl_grid_panel.rowHeights = new int[]{100, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0};
-		gbl_grid_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0};
+		gbl_grid_panel.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0};
 		gbl_grid_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0};
 		grid_panel.setLayout(gbl_grid_panel);
 		
@@ -153,7 +153,7 @@ public class HackflixMainGUI {
 		
 		JComboBox genre_combobox = new JComboBox();
 		genre_label.setLabelFor(genre_combobox);
-		genre_combobox.setModel(new DefaultComboBoxModel(new String[] {"Action", "Anime", "British", "Children", "Classic", "Comedy", "Documentary", "Drama", "Horror", "Indie", "International", "Musical", "None", "Reality", "Romance", "Sci-Fi & Fantasy", "Spanish-Language", "Sports", "Thriller"}));
+		genre_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Action", "Anime", "British", "Children", "Classic", "Comedy", "Documentary", "Drama", "Horror", "Indie", "International", "Musical", "None", "Reality", "Romance", "Sci-Fi & Fantasy", "Spanish-Language", "Sports", "Thriller"}));
 		GridBagConstraints gbc_genre_combobox = new GridBagConstraints();
 		gbc_genre_combobox.fill = GridBagConstraints.VERTICAL;
 		gbc_genre_combobox.insets = new Insets(0, 0, 5, 5);
@@ -165,7 +165,7 @@ public class HackflixMainGUI {
 		
 		JComboBox releaseyear_combobox = new JComboBox();
 		release_year_label.setLabelFor(releaseyear_combobox);
-		releaseyear_combobox.setModel(new DefaultComboBoxModel(new String[] {"pre-1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020"}));
+		releaseyear_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "pre-1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020"}));
 		GridBagConstraints gbc_releaseyear_combobox = new GridBagConstraints();
 		gbc_releaseyear_combobox.fill = GridBagConstraints.BOTH;
 		gbc_releaseyear_combobox.insets = new Insets(0, 0, 5, 5);
@@ -177,7 +177,7 @@ public class HackflixMainGUI {
 		
 		JComboBox rating_combobox = new JComboBox();
 		rating_label.setLabelFor(rating_combobox);
-		rating_combobox.setModel(new DefaultComboBoxModel(new String[] {"G/TV-G or lower", "PG/TV-PG", "PG-13/TV-14", "R/TV-MA", "NC-17"}));
+		rating_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "G/TV-G or lower", "PG/TV-PG", "PG-13/TV-14", "R/TV-MA", "NC-17"}));
 		GridBagConstraints gbc_rating_combobox = new GridBagConstraints();
 		gbc_rating_combobox.fill = GridBagConstraints.BOTH;
 		gbc_rating_combobox.insets = new Insets(0, 0, 5, 5);
@@ -213,7 +213,7 @@ public class HackflixMainGUI {
 		
 		JComboBox director_combobox = new JComboBox();
 		director_label.setLabelFor(director_combobox);
-		director_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
+		director_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Option1", "Option2", "Option3"}));
 		GridBagConstraints gbc_director_combobox = new GridBagConstraints();
 		gbc_director_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_director_combobox.fill = GridBagConstraints.HORIZONTAL;
@@ -225,7 +225,7 @@ public class HackflixMainGUI {
 		
 		JComboBox cast_combobox = new JComboBox();
 		cast_label.setLabelFor(cast_combobox);
-		cast_combobox.setModel(new DefaultComboBoxModel(new String[] {"ComboBox"}));
+		cast_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Option1", "Option2", "Option3"}));
 		GridBagConstraints gbc_cast_combobox = new GridBagConstraints();
 		gbc_cast_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_cast_combobox.fill = GridBagConstraints.HORIZONTAL;
@@ -237,7 +237,7 @@ public class HackflixMainGUI {
 		
 		JComboBox duration_combobox = new JComboBox();
 		duration_label.setLabelFor(duration_combobox);
-		duration_combobox.setModel(new DefaultComboBoxModel(new String[] {"Short Film (< 40 min)", "Featurette (40-75 min)", "Feature Film (75+ min)"}));
+		duration_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Short Film (< 40 min)", "Featurette (40-75 min)", "Feature Film (75+ min)"}));
 		GridBagConstraints gbc_duration_combobox = new GridBagConstraints();
 		gbc_duration_combobox.fill = GridBagConstraints.BOTH;
 		gbc_duration_combobox.insets = new Insets(0, 0, 5, 5);
@@ -275,7 +275,7 @@ public class HackflixMainGUI {
 		});
 		
 		JComboBox country_combobox = new JComboBox();
-		country_combobox.setModel(new DefaultComboBoxModel(new String[] {"Argentina", "Australia", "Austria", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Cambodia", "Canada", "Chile", "China", "Colombia", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Egypt", "Finland", "France", "Georgia", "Germany", "Ghana", "Guatemala", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Ireland", "Israel", "Italy", "Japan", "Lebanon", "Malaysia", "Mexico", "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Romania", "Russia", "Saudi Arabia", "Serbia", "Singapore", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Venezuela", "Vietnam"}));
+		country_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Argentina", "Australia", "Austria", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Cambodia", "Canada", "Chile", "China", "Colombia", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Egypt", "Finland", "France", "Georgia", "Germany", "Ghana", "Guatemala", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Ireland", "Israel", "Italy", "Japan", "Lebanon", "Malaysia", "Mexico", "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Romania", "Russia", "Saudi Arabia", "Serbia", "Singapore", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Venezuela", "Vietnam"}));
 		country_combobox.setBackground(new Color(0, 0, 0));
 		GridBagConstraints gbc_country_combobox = new GridBagConstraints();
 		gbc_country_combobox.insets = new Insets(0, 0, 5, 5);
@@ -338,7 +338,7 @@ public class HackflixMainGUI {
 		JComboBox sort_by_combobox = new JComboBox();
 		sort_by_combobox.setForeground(Color.BLACK);
 		sort_by_combobox.setBackground(Color.GRAY);
-		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"Title (Descending)", "Title (Ascending)", "Release Year (Descending)", "Release Year (Ascending)"}));
+		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Title (Descending)", "Title (Ascending)", "Release Year (Descending)", "Release Year (Ascending)"}));
 		
 		sort_by_panel.add(sort_by_combobox);
 		
@@ -475,7 +475,7 @@ public class HackflixMainGUI {
 		main_buttons.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton movie_button = new JButton("Movies");
-		movie_button.setFont(new Font("Gill Sans", Font.PLAIN, 15));
+		movie_button.setFont(new Font("Gill Sans", Font.PLAIN, 16));
 		movie_button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -491,7 +491,7 @@ public class HackflixMainGUI {
 		main_buttons.add(movie_button);
 		
 		JButton show_button = new JButton("TV Shows");
-		show_button.setFont(new Font("Gill Sans", Font.PLAIN, 15));
+		show_button.setFont(new Font("Gill Sans", Font.PLAIN, 16));
 		show_button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -519,7 +519,7 @@ public class HackflixMainGUI {
 				
 			}
 		});
-		both_button.setFont(new Font("Gill Sans", Font.PLAIN, 15));
+		both_button.setFont(new Font("Gill Sans", Font.PLAIN, 16));
 		main_buttons.add(both_button);
 		
 		JPanel quick_search = new JPanel();
