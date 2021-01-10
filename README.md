@@ -2,11 +2,14 @@
 
 ## Overview
 
-### Project summary
+### Project Summary
 
 Hackflix is an app that helps you decide what to watch on Netflix. You provide Hackflix with your preferences and it filters the 4000+ movies and TV shows to match those preferences as best as possible. Kiss Netflix-related-decision-paralysis goodbye, because Hackflix is here to cut down the insurmountable amount of content Netflix has to offer into a manageable selection based on what you actually want to watch.
 
 Include the link to your Devpost project page here: [Devpost](https://...)
+
+#### GitHub Repository :octocat: 
+https://github.com/tgeorge1001/Eri-James-George.git
 
 ### Authors
 
@@ -33,9 +36,9 @@ Lastly you must install [Univocity](https://www.univocity.com/pages/univocity_pa
 
 ### Deployment
 
-1. To start the Hackflix app, run the Main.java file from Eclipse.
+1. To start the Hackflix app, run the Main.java file from Eclipse to view the Main page.
 
-...
+
 
 ## Additional information
 
