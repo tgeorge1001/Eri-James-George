@@ -9,7 +9,7 @@ Hackflix is an app that helps you decide what to watch on Netflix. You provide H
 #### :computer: Devpost project page
 https://devpost.com/software/hackflix
 
-#### :octocat: GitHub Repository 
+#### :octocat: GitHub repository 
 https://github.com/tgeorge1001/Eri-James-George.git
 
 ### Authors
