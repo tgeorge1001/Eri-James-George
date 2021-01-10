@@ -577,6 +577,7 @@ public class HackflixMainGUI {
 				tvshow = false;
 				both = false;
 				searchSelection = nss.getInitializedMap(); // clear map
+				sort_by_combobox.setSelectedIndex(0);
 				
 				frmHackflix.setSize(800, 500);
 				frmHackflix.setTitle("Hackflix");
