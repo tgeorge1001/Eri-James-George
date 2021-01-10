@@ -56,6 +56,13 @@ public class HackflixMainGUI {
 	boolean both = false;
 	JTextArea textArea;
 	JScrollPane results_scrollPane;
+	JComboBox country_combobox;
+	JComboBox genre_combobox;
+	JComboBox releaseyear_combobox;
+	JComboBox rating_combobox;
+	JComboBox director_combobox;
+	JComboBox cast_combobox;
+	JComboBox duration_combobox;
 	
 	NetflixCSVReader reader;
 	NetflixSearchSelection nss; 
@@ -177,7 +184,7 @@ public class HackflixMainGUI {
 		gbc_rating_label.gridy = 5;
 		grid_panel.add(rating_label, gbc_rating_label);
 		
-		JComboBox genre_combobox = new JComboBox();
+		genre_combobox = new JComboBox();
 		genre_label.setLabelFor(genre_combobox);
 		genre_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Action", "Anime", "British", "Children", "Classic", "Comedy", "Documentary", "Drama", "Horror", "Indie", "International", "Musical", "Reality", "Romance", "Sci-Fi & Fantasy", "Spanish-Language", "Sports", "Thriller"}));
 		GridBagConstraints gbc_genre_combobox = new GridBagConstraints();
@@ -195,7 +202,7 @@ public class HackflixMainGUI {
 		});
 		grid_panel.add(genre_combobox, gbc_genre_combobox);
 		
-		JComboBox releaseyear_combobox = new JComboBox();
+		releaseyear_combobox = new JComboBox();
 		release_year_label.setLabelFor(releaseyear_combobox);
 		releaseyear_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "pre-1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020"}));
 		GridBagConstraints gbc_releaseyear_combobox = new GridBagConstraints();
@@ -213,7 +220,7 @@ public class HackflixMainGUI {
 		});
 		grid_panel.add(releaseyear_combobox, gbc_releaseyear_combobox);
 		
-		JComboBox rating_combobox = new JComboBox();
+		rating_combobox = new JComboBox();
 		rating_label.setLabelFor(rating_combobox);
 		rating_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "G/TV-G or lower", "PG/TV-PG", "PG-13/TV-14", "R/TV-MA", "NC-17", "NR"}));
 		GridBagConstraints gbc_rating_combobox = new GridBagConstraints();
@@ -255,7 +262,7 @@ public class HackflixMainGUI {
 		gbc_duration_label.gridy = 8;
 		grid_panel.add(duration_label, gbc_duration_label);
 		
-		JComboBox director_combobox = new JComboBox();
+		director_combobox = new JComboBox();
 		director_label.setLabelFor(director_combobox);
 		director_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Alfred Hitchcock", "Christopher Nolan", "M. Night Shyamalan", "Martin Scorsese", "Peter Jackson", "Quentin Tarantino", "Stanley Kubrick", "Steven Spielberg", "Taika Waititi", "Tim Burton"}));
 		GridBagConstraints gbc_director_combobox = new GridBagConstraints();
@@ -273,7 +280,7 @@ public class HackflixMainGUI {
 		});
 		grid_panel.add(director_combobox, gbc_director_combobox);
 		
-		JComboBox cast_combobox = new JComboBox();
+		cast_combobox = new JComboBox();
 		cast_label.setLabelFor(cast_combobox);
 		cast_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Angelina Jolie", "Anne Hathaway", "Ben Affleck", "Brad Pitt", "Charlize Theron", "Christian Bale", "Clint Eastwood", "Clint Eastwood", "Dwayne Johnson", "George Clooney", "Jackie Chan", "Jennifer Aniston", "Jennifer Lawrence", "Johnny Depp", "Julia Roberts", "Leonardo DiCaprio", "Matt Damon", "Meryl Streep", "Morgan Freeman", "Natalie Portman", "Nicole Kidman", "Robert De Niro", "Ryan Gosling", "Scarlett Johansson", "Tom Cruise"}));
 		GridBagConstraints gbc_cast_combobox = new GridBagConstraints();
@@ -291,7 +298,7 @@ public class HackflixMainGUI {
 		});
 		grid_panel.add(cast_combobox, gbc_cast_combobox);
 		
-		JComboBox duration_combobox = new JComboBox();
+		duration_combobox = new JComboBox();
 		duration_label.setLabelFor(duration_combobox);
 		duration_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "1 Season (TV-only)", "Short Film (<40 min)", "Featurette (40-75 min)", "Feature Film (75+ min)"}));
 		GridBagConstraints gbc_duration_combobox = new GridBagConstraints();
@@ -326,7 +333,6 @@ public class HackflixMainGUI {
 			public void actionPerformed(ActionEvent e) {
 				
 				sort_by_combobox.setSelectedIndex(0);
-				//nss.printMap(searchSelection);
 				reader.clearNetflixData();
 				reader.parseData(searchSelection);
 				allNetflixData = reader.getAllNetflixData();
@@ -335,6 +341,14 @@ public class HackflixMainGUI {
 				String resultText = stringOutputRandom(resultSize);
 				
 				textArea.setText(resultText);
+				
+				country_combobox.setSelectedIndex(0);
+				genre_combobox.setSelectedIndex(0);
+				releaseyear_combobox.setSelectedIndex(0);
+				rating_combobox.setSelectedIndex(0);
+				director_combobox.setSelectedIndex(0);
+				cast_combobox.setSelectedIndex(0);
+				duration_combobox.setSelectedIndex(0);
 				
 				results_panel.revalidate();
 				results_panel.repaint();
@@ -347,14 +361,10 @@ public class HackflixMainGUI {
 				nss = new NetflixSearchSelection();
 				searchSelection = nss.getInitializedMap();
 				
-				/*
-				final JDialog dialog = new JDialog();
-				dialog.setAlwaysOnTop(true);    
-				JOptionPane.showMessageDialog(dialog, "Search button pressed!"); */
 			}
 		});
 		
-		JComboBox country_combobox = new JComboBox();
+		country_combobox = new JComboBox();
 		country_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Argentina", "Australia", "Austria", "Bangladesh", "Belgium", "Brazil", "Bulgaria", "Cambodia", "Canada", "Chile", "China", "Colombia", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Dominican Republic", "Egypt", "Finland", "France", "Georgia", "Germany", "Ghana", "Guatemala", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Ireland", "Israel", "Italy", "Japan", "Lebanon", "Malaysia", "Mexico", "Netherlands", "New Zealand", "Nigeria", "Norway", "Pakistan", "Peru", "Philippines", "Poland", "Romania", "Russia", "Saudi Arabia", "Serbia", "Singapore", "South Africa", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Venezuela", "Vietnam"}));
 		country_combobox.setBackground(new Color(0, 0, 0));
 		GridBagConstraints gbc_country_combobox = new GridBagConstraints();
@@ -571,16 +581,8 @@ public class HackflixMainGUI {
 				frmHackflix.setSize(800, 500);
 				frmHackflix.setTitle("Hackflix");
 				
-				/*
-				final JDialog dialog = new JDialog();
-				dialog.setAlwaysOnTop(true);    
-				JOptionPane.showMessageDialog(dialog, "Search button pressed!"); */
 			}
-		});
-		
-		//JTextArea txtrLoremIpsumDolor = new JTextArea();
-		//txtrLoremIpsumDolor.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis eget libero et consequat. Sed imperdiet purus vel elementum dapibus. Integer eget libero imperdiet, mattis tellus vel, semper nunc. Donec congue sollicitudin risus vel ultricies. Sed malesuada euismod orci, ac tristique sem ornare at. Phasellus sit amet sem quis turpis mollis elementum sed vel metus. Vestibulum finibus at lacus ornare mollis. Phasellus a feugiat lacus, sed consectetur odio. Nulla tincidunt eu tellus et euismod. Suspendisse nisi erat, dignissim at egestas et, congue laoreet quam. Pellentesque in tortor suscipit, fermentum magna eu, fermentum nisi. Curabitur ut auctor metus.\n\nFusce consectetur tellus dolor, ut lacinia nisi eleifend ut. Nunc fermentum, eros ut mattis volutpat, tellus enim lobortis mi, a mattis nunc nisl sit amet quam. Sed facilisis lacus vitae leo pretium eleifend. Nullam pulvinar orci sed egestas bibendum. Pellentesque vel semper nisl, eu tempor purus. Fusce vestibulum sit amet leo eu bibendum. Phasellus ut nisl tincidunt est sodales lobortis. Integer neque tortor, posuere rhoncus tellus vel, tincidunt tincidunt elit. Aliquam nunc ante, varius sed turpis a, facilisis sollicitudin purus. Praesent eget imperdiet orci. Donec a semper urna, sit amet condimentum turpis.\n\nProin tempus consequat porttitor. Duis efficitur gravida libero, sit amet tincidunt erat pulvinar placerat. Nulla vel urna gravida, blandit diam in, euismod dui. Donec auctor vulputate arcu condimentum egestas. Nulla facilisi. Donec id nunc ac tellus pulvinar varius. Vestibulum consectetur posuere ante in fermentum. Fusce at vestibulum velit, id porta elit. Sed vel est porttitor, fringilla enim at, interdum orci. Etiam molestie eros lorem, et interdum justo auctor ullamcorper. Donec vitae tristique ipsum, et volutpat neque. Curabitur aliquam enim est, et lacinia ante cursus vitae. Ut arcu velit, commodo ac porta eu, mattis quis tellus. Mauris vel lacus ut ex eleifend pharetra hendrerit eget sapien. Nulla pharetra, risus vel sagittis iaculis, ligula sapien placerat lectus, suscipit placerat magna risus id massa.\n\nProin finibus porta sapien, cursus hendrerit elit mattis a. Integer sem sem, tempor sit amet urna at, fermentum consequat est. Nunc consequat metus feugiat porttitor consequat. Duis sit amet lorem sapien. Nunc id ex id dui semper accumsan at quis urna. Duis laoreet metus iaculis nibh consequat, et egestas magna porttitor. Cras in auctor augue. Sed purus metus, facilisis eget nunc id, lacinia viverra ligula. Nam nec turpis nunc. Mauris nec sagittis felis. Quisque quis dignissim nisi. Morbi a arcu quis massa fermentum fringilla vitae eget turpis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus euismod et mi non molestie. Aliquam erat volutpat.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id sodales risus. Ut vestibulum eros id placerat iaculis. Morbi quis tempor ante. Curabitur sed lacinia est. Nulla facilisi. Vestibulum id pretium neque. Curabitur vel pellentesque dolor. Mauris porttitor risus a tellus fringilla, ut finibus enim tempor. Nunc ex velit, pellentesque in dui ac, dictum vehicula metus.");
-		//results_scrollPane.setColumnHeaderView(txtrLoremIpsumDolor);	
+		});	
 	}
 	
 	/* 
@@ -717,7 +719,6 @@ public class HackflixMainGUI {
 				
 				String textSearchString = txtQuickSearch.getText();
 				searchSelection.put("Keyword", textSearchString);
-				// nss.printMap(searchSelection);
 				
 				reader.clearNetflixData();
 				reader.parseData(searchSelection);
@@ -727,7 +728,6 @@ public class HackflixMainGUI {
 				String resultText = stringOutputRandom(resultSize);
 				
 				textArea.setText(resultText);
-				//textArea.setCaretPosition(0);
 				
 				results_panel.revalidate();
 				results_panel.repaint();
@@ -741,6 +741,8 @@ public class HackflixMainGUI {
 				movies = false;
 				tvshow = false;
 				both = false;
+				
+				txtQuickSearch.setText("Quick Search");
 	
 				
 				frmHackflix.setSize(600, 800);
@@ -748,10 +750,6 @@ public class HackflixMainGUI {
 				
 				nss = new NetflixSearchSelection();
 				searchSelection = nss.getInitializedMap();
-				/*
-				final JDialog dialog = new JDialog();
-				dialog.setAlwaysOnTop(true);    
-				JOptionPane.showMessageDialog(dialog, "Quick search used!");*/
 			}
 		});
 		quick_search.add(txtQuickSearch);
@@ -828,7 +826,7 @@ public class HackflixMainGUI {
 		}
 		
 		if (resultText.isEmpty()) {
-			resultText = "Sorry, there was no match! Please again.";
+			resultText = "Sorry, there was no match! Please try again.";
 		}
 		return resultText;
 	}

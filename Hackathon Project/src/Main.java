@@ -10,10 +10,8 @@ public class Main {
 	
 		String filename = args[0];
 		
-		// create reader, processor
+		// create reader
 		NetflixCSVReader reader = new NetflixCSVReader(filename);
-		//reader.parseData();
-		//NetflixProcessor processor = new NetflixProcessor(reader);
 		
 		// start the GUI 
 		EventQueue.invokeLater(new Runnable() {
