@@ -80,7 +80,7 @@ public class NetflixSearchSelection {
 		}
 	};
 
-	public List<NetflixData> sortByPriceAscend(List<NetflixData> input) {
+	public List<NetflixData> sortByYearAscend(List<NetflixData> input) {
 		Collections.sort(input, compareByYear);
 		return input;
 	};
@@ -89,7 +89,7 @@ public class NetflixSearchSelection {
 	 * This method sorts by year in descending order
 	 * @param "input" data set to search from
 	 */
-	public List<NetflixData> sortByPriceDescend(List<NetflixData> input) {
+	public List<NetflixData> sortByYearDescend(List<NetflixData> input) {
 		Collections.sort(input, compareByYear.reversed());
 		return input;
 	};

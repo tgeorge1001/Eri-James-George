@@ -73,7 +73,7 @@ public class NetflixDataCleanup {
 	ArrayList<String> spanGenres = new ArrayList<String>(Arrays.asList("Spanish-Language TV Shows"));
 
 	// raw "listed_in" values that map to the "Sports" genre category
-	ArrayList<String> sporGenres = new ArrayList<String>(Arrays.asList("Sports"));
+	ArrayList<String> sporGenres = new ArrayList<String>(Arrays.asList("Sports Movies"));
 
 	// raw "listed_in" values that map to the "Thriller" genre category
 	ArrayList<String> thrillGenres = new ArrayList<String>(Arrays.asList("Thrillers"));

@@ -14,6 +14,7 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.text.DefaultCaret;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -47,6 +48,7 @@ public class HackflixMainGUI {
 	private JPanel main_panel = new JPanel();
 	private JLabel movie_or_tv_title_label = new JLabel("");
 	private JTextField txtQuickSearch;
+	JComboBox sort_by_combobox;
 	@SuppressWarnings("unused")
 	private final Action action = new SwingAction();
 	boolean movies = false;
@@ -323,6 +325,7 @@ public class HackflixMainGUI {
 		find_my_rec_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				sort_by_combobox.setSelectedIndex(0);
 				//nss.printMap(searchSelection);
 				reader.clearNetflixData();
 				reader.parseData(searchSelection);
@@ -421,7 +424,7 @@ public class HackflixMainGUI {
 		sort_by_label.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		sort_by_panel.add(sort_by_label);
 		
-		JComboBox sort_by_combobox = new JComboBox();
+		sort_by_combobox = new JComboBox();
 		sort_by_combobox.setForeground(Color.BLACK);
 		sort_by_combobox.setBackground(Color.GRAY);
 		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Title (Ascending)", "Title (Descending)", "Release Year (Ascending)", "Release Year (Descending)"}));
@@ -432,7 +435,6 @@ public class HackflixMainGUI {
 				
 				switch (selection) {
 
-				// This sorts the wine profiles in alphabetical order (A to Z)
 				case 1:
 					allNetflixData = nss.sortByAlphabetAscend(allNetflixData);
 
@@ -447,7 +449,6 @@ public class HackflixMainGUI {
 
 					break;
 
-				// This sorts the wine profiles by point value (highest to lowest)
 				case 2:
 
 					allNetflixData = nss.sortByAlphabetDescend(allNetflixData);
@@ -462,10 +463,9 @@ public class HackflixMainGUI {
 					
 					break;
 
-				// This sorts the wine profiles by point value (lowest to highest)
 				case 3:
 					
-					allNetflixData = nss.sortByPriceAscend(allNetflixData);
+					allNetflixData = nss.sortByYearAscend(allNetflixData);
 
 					int resultSize3 = allNetflixData.size();
 					String resultText3 = stringOutputRandom(resultSize3);
@@ -477,10 +477,9 @@ public class HackflixMainGUI {
 					
 					break;
 
-				// This sorts the wine profiles by price (highest to lowest)
 				case 4:
 					
-					allNetflixData = nss.sortByPriceDescend(allNetflixData);
+					allNetflixData = nss.sortByYearDescend(allNetflixData);
 
 					int resultSize4 = allNetflixData.size();
 					String resultText4 = stringOutputRandom(resultSize4);
@@ -521,6 +520,8 @@ public class HackflixMainGUI {
 		textArea.setLineWrap(true);
 		textArea.setEnabled(false);
 		textArea.setSize(400,500);
+		DefaultCaret caret = (DefaultCaret)textArea.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
 		
 		results_scrollPane = new JScrollPane(textArea);
 		results_scrollPane.setToolTipText("");
@@ -558,6 +559,7 @@ public class HackflixMainGUI {
 		
 		start_over_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				search_panel.setVisible(false);
 				results_panel.setVisible(false);
 				main_panel.setVisible(true);
