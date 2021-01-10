@@ -525,7 +525,7 @@ public class NetflixDataCleanup {
 	 * @return an arraylist of "listed_in" values that map to the entered genregroup name, or null if there is no match.
 	 */
 	public List<String> convertGenre (String genreGroup) {
-		if (genreGroup.equals("Action")) {
+		if (genreGroup == "Action") {
 			return actGenres;
 		}
 		else if (genreGroup.equals("Anime")) {
@@ -612,3 +612,4 @@ public class NetflixDataCleanup {
 		}
 	}
 }
+
