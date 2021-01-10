@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * This class provides instance variables and methods to categorize and summarize various fields within the original dataset.
@@ -123,7 +124,7 @@ public class NetflixDataCleanup {
 		boolean isAnime = false;
 		for (String s : aniGenres) {
 			if (content.getGenre().get(0).toLowerCase().contains(s.toLowerCase())) {
-				isAction = true;
+				isAnime = true;
 			}
 		}
 		return isAnime;
