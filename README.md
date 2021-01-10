@@ -1,18 +1,18 @@
-# Project Title
+# Hackflix
 
 ## Overview
 
 ### Project summary
 
-Please provide a short (one paragraph) summary of your project. Consider this your elevator pitch.
+Hackflix is an app that helps you decide what to watch on Netflix. You provide the Hackflix app with your preferences and the app filters the 4000+ movies and TV shows to match those preferences as best as possible. Kiss Netflix-related-decision-paralysis goodbye, because Hackflix is here to cut down the insurmountable amount of content Netflix has to offer into a manageable selection based on what you actually want to watch.
 
 Include the link to your Devpost project page here: [Devpost](https://...)
 
 ### Authors
 
-* **Name** - Devpost ID – Penn email – [GitHub](https://github.com/user_name)
-* **Name** - Devpost ID – Penn email – [GitHub](https://github.com/user_name)
-* **Name** - Devpost ID – Penn email – [GitHub](https://github.com/user_name)
+* **Eri Arai** - Devpost ID – eriarai@seas.upenn.edu – [GitHub](https://github.com/eri-arai)
+* **Thumpasery Joseph George** - Devpost ID – tjgeorge@seas.upenn.edu – [GitHub](https://github.com/tgeorge1001)
+* **James Grimes** - jdgrimes – jdgrimes@seas.upenn.edu – [GitHub](https://github.com/phewf)
 
 ## Usage
 
