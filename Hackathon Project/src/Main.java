@@ -12,15 +12,14 @@ public class Main {
 		
 		// create reader, processor
 		NetflixCSVReader reader = new NetflixCSVReader(filename);
-		reader.parseData();
-		NetflixProcessor processor = new NetflixProcessor(reader);
-		NetflixSearch searcher = new NetflixSearch(processor);	
+		//reader.parseData();
+		//NetflixProcessor processor = new NetflixProcessor(reader);
 		
 		// start the GUI 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					HackflixMainGUI window = new HackflixMainGUI(searcher);
+					HackflixMainGUI window = new HackflixMainGUI(reader);
 					window.frmHackflix.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

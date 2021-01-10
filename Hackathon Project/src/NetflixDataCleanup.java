@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * This class provides instance variables and methods to categorize and summarize various fields within the original dataset.
@@ -76,6 +77,14 @@ public class NetflixDataCleanup {
 
 	// raw "listed_in" values that map to the "Thriller" genre category
 	ArrayList<String> thrillGenres = new ArrayList<String>(Arrays.asList("Thrillers"));
+	
+	
+	ArrayList<String> Grating = new ArrayList<String>(Arrays.asList("G", "TV-G"));
+	ArrayList<String> PGrating = new ArrayList<String>(Arrays.asList("PG", "TV-PG"));
+	ArrayList<String> PG13rating = new ArrayList<String>(Arrays.asList("PG-13", "TV-14"));
+	ArrayList<String> Rrating = new ArrayList<String>(Arrays.asList("R", "TV-MA"));
+	ArrayList<String> NCrating = new ArrayList<String>(Arrays.asList("NC-17"));
+
 
 	/**
 	 * This method returns all genre categories.
@@ -123,7 +132,7 @@ public class NetflixDataCleanup {
 		boolean isAnime = false;
 		for (String s : aniGenres) {
 			if (content.getGenre().get(0).toLowerCase().contains(s.toLowerCase())) {
-				isAction = true;
+				isAnime = true;
 			}
 		}
 		return isAnime;
@@ -516,66 +525,87 @@ public class NetflixDataCleanup {
 	 * @return an arraylist of "listed_in" values that map to the entered genregroup name, or null if there is no match.
 	 */
 	public List<String> convertGenre (String genreGroup) {
-		List<String> genreList = new ArrayList<String>();
-		if (genreGroup == "Action") {
+		if (genreGroup.equals("Action")) {
 			return actGenres;
 		}
-		if (genreGroup == "Anime") {
+		else if (genreGroup.equals("Anime")) {
 			return aniGenres;
 		}
-		if (genreGroup == "British") {
+		else if (genreGroup.equals("British")) {
 			return britGenres;
 		}
-		if (genreGroup == "Children") {
+		else if (genreGroup.equals("Children")) {
 			return chiGenres;
 		}
-		if (genreGroup == "Classic") {
+		else if (genreGroup.equals("Classic")) {
 			return clasGenres;
 		}
-		if (genreGroup == "Comedy") {
+		else if (genreGroup.equals("Comedy")) {
 			return comGenres;
 		}
-		if (genreGroup == "Documentary") {
+		else if (genreGroup.equals("Documentary")) {
 			return docGenres;
 		}
-		if (genreGroup == "Drama") {
+		else if (genreGroup.equals("Drama")) {
 			return dramGenres;
 		}
-		if (genreGroup == "Horror") {
+		else if (genreGroup.equals("Horror")) {
 			return horGenres;
 		}
-		if (genreGroup == "Indie") {
+		else if (genreGroup.equals("Indie")) {
 			return indiGenres;
 		}
-		if (genreGroup == "International") {
+		else if (genreGroup.equals("International")) {
 			return docGenres;
 		}
-		if (genreGroup == "Musical") {
+		else if (genreGroup.equals("Musical")) {
 			return musGenres;
 		}
-		if (genreGroup == "None") {
+		else if (genreGroup.equals("None")) {
 			return noGenres;
 		}
-		if (genreGroup == "Reality") {
+		else if (genreGroup.equals("Reality")) {
 			return realGenres;
 		}
-		if (genreGroup == "Romance") {
+		else if (genreGroup.equals("Romance")) {
 			return romGenres;
 		}
-		if (genreGroup == "Sci-Fi & Fantasy") {
+		else if (genreGroup.equals("Sci-Fi & Fantasy")) {
 			return scifanGenres;
 		}
-		if (genreGroup == "Spanish-Language") {
+		else if (genreGroup.equals("Spanish-Language")) {
 			return spanGenres;
 		}
-		if (genreGroup == "Sports") {
+		else if (genreGroup.equals("Sports")) {
 			return sporGenres;
 		}
-		if (genreGroup == "Spanish-Language") {
+		else if (genreGroup.equals("Spanish-Language")) {
 			return spanGenres;
 		}
-		if (genreGroup == "Thriller") {
+		else if (genreGroup.equals("Thriller")) {
 			return thrillGenres;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public List<String> convertRating(String ratingGroup) {
+		
+		if (ratingGroup.equals("G/TV-G or lower")) {
+			return Grating;
+		}
+		else if (ratingGroup.equals("PG/TV-PG")) {
+			return PGrating;
+		}
+		else if (ratingGroup.equals("PG-13/TV-14")) {
+			return PG13rating;
+		}
+		else if (ratingGroup.equals("R/TV-MA")) {
+			return Rrating;
+		}
+		else if (ratingGroup.equals("NC-17")) {
+			return NCrating;
 		}
 		else {
 			return null;
