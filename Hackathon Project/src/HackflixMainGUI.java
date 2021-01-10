@@ -282,7 +282,7 @@ public class HackflixMainGUI {
 		
 		cast_combobox = new JComboBox();
 		cast_label.setLabelFor(cast_combobox);
-		cast_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Angelina Jolie", "Anne Hathaway", "Ben Affleck", "Brad Pitt", "Charlize Theron", "Christian Bale", "Clint Eastwood", "Clint Eastwood", "Dwayne Johnson", "George Clooney", "Jackie Chan", "Jennifer Aniston", "Jennifer Lawrence", "Johnny Depp", "Julia Roberts", "Leonardo DiCaprio", "Matt Damon", "Meryl Streep", "Morgan Freeman", "Natalie Portman", "Nicole Kidman", "Robert De Niro", "Ryan Gosling", "Scarlett Johansson", "Tom Cruise"}));
+		cast_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Angelina Jolie", "Anne Hathaway", "Ben Affleck", "Brad Pitt", "Charlize Theron", "Christian Bale", "Clint Eastwood", "Dwayne Johnson", "George Clooney", "Jackie Chan", "Jennifer Aniston", "Jennifer Lawrence", "Johnny Depp", "Julia Roberts", "Leonardo DiCaprio", "Matt Damon", "Meryl Streep", "Morgan Freeman", "Natalie Portman", "Nicole Kidman", "Robert De Niro", "Ryan Gosling", "Scarlett Johansson", "Tom Cruise"}));
 		GridBagConstraints gbc_cast_combobox = new GridBagConstraints();
 		gbc_cast_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_cast_combobox.fill = GridBagConstraints.HORIZONTAL;
@@ -649,7 +649,7 @@ public class HackflixMainGUI {
 		main_buttons.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton movie_button = new JButton("Movies");
-		movie_button.setFont(new Font("Gill Sans", Font.PLAIN, 16));
+		movie_button.setFont(new Font("Gill Sans", Font.PLAIN, 18));
 		movie_button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -667,7 +667,7 @@ public class HackflixMainGUI {
 		main_buttons.add(movie_button);
 		
 		JButton show_button = new JButton("TV Shows");
-		show_button.setFont(new Font("Gill Sans", Font.PLAIN, 16));
+		show_button.setFont(new Font("Gill Sans", Font.PLAIN, 18));
 		show_button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -699,7 +699,7 @@ public class HackflixMainGUI {
 				
 			}
 		});
-		both_button.setFont(new Font("Gill Sans", Font.PLAIN, 16));
+		both_button.setFont(new Font("Gill Sans", Font.PLAIN, 18));
 		main_buttons.add(both_button);
 		
 		JPanel quick_search = new JPanel();
