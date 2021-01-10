@@ -35,21 +35,40 @@ Lastly you must install [Univocity](https://www.univocity.com/pages/univocity_pa
 3. Navigate to Build Path, and click on Add External Archives. (This should cause a window to appear where you can navigate your file system.)
 4. In this window navigate to the location where you unzipped univocity, and find the .jar file that has a name that begins with "univocity_parsers", select it, and click on the "Open" button.
 
+
 ## Deployment
-To start the Hackflix app, run the Main.java file from Eclipse to view the Main page.
+To launch the Hackflix app, run the Main.java file from Eclipse to view the main Hackflix application page.
 
 <a href="url"><img src="Screenshots/main_page.png" align="center" height="400" width="600" ></a>
 
-There are two primary features of the application: quick keyword search and advanced search.
+There are two primary features to this application: quick keyword search and advanced search.
 
 ### 1.	Quick Search
-1. The quick search function can be used if the user knows what movie or TV show they are looking for. For example, maybe you want to see if any of the *Transformer* series are on Netflix. To conduct a quick search, simply type in the full name or a keyword from the movie or TV show you are looking for and hit Enter.
+The quick search function can be used if the user knows what movie or TV show they are looking for. For example, maybe you want to see if any of the *Transformer* series are on Netflix. To conduct a quick search, simply type in the full name or a keyword from the movie or TV show you are looking for and hit Enter.
 
 <a href="url"><img src="Screenshots/quick_search_example.png" align="center" height="400" width="600" ></a>
 
-2. The search results page will be automatically launched with the results. If there is more than one result, the results will be sorted by random. The users can change the order in which results are displayed by selecting from the drop-down menu to display results alphabetically (ascending or descending) or by release year (ascending or descending). There is a maximum of 25 results displayed so the user will have a not-too-overwhelming, sizeable selection to browse through.
+The search results page will be automatically launched with the results. If there is more than one result, the results will be sorted by random. The users can change the order in which results are displayed by selecting from the drop-down menu to display results alphabetically (ascending or descending) or by release year (ascending or descending). There is a maximum of 25 results displayed so the user will have a not-too-overwhelming, sizeable selection to browse through.
 
-<a href="url"><img src="Screenshots/search_results_example.png" align="center" height="500" width="350" ></a>
+<a href="url"><img src="Screenshots/search_results_example.png" align="center" height="530" width="400" ></a>
+
+### 2.	Advanced Search
+The advanced search function can be used to browse and find Netflix movie and/or TV show recommendations based on the preferences they select. To get started, the user can press one of the three buttons on the main screen depending on which type of show they would like to browse: "Movies", "TV Shows", or "Both" (Movies & TV shows).
+
+<a href="url"><img src="Screenshots/main_page.png" align="center" height="400" width="600" ></a>
+
+If the user selects "Movies", then the application will switch to a query-building window to search for Netflix Movies.
+
+<a href="url"><img src="Screenshots/movies_page.png" align="center" height="400" width="600" ></a>
+
+Likewise, if the user selects "TV Shows", then the application will switch to a query-building window to search for Netflix Movies.
+
+<a href="url"><img src="Screenshots/tv_shows_page.png" align="center" height="400" width="600" ></a>
+
+Finally, if the user selects "Both", then the application will switch to a query-building window to search for Netflix Movies.
+
+<a href="url"><img src="Screenshots/both_page.png" align="center" height="400" width="600" ></a>
+
 
 ## Additional information
 
