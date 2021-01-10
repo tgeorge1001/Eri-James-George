@@ -6,7 +6,8 @@
 
 Hackflix is an app that helps you decide what to watch on Netflix. You provide Hackflix with your preferences and it filters the 4000+ movies and TV shows to match those preferences as best as possible. Kiss Netflix-related-decision-paralysis goodbye, because Hackflix is here to cut down the insurmountable amount of content Netflix has to offer into a manageable selection based on what you actually want to watch.
 
-Include the link to your Devpost project page here: [Devpost](https://...)
+#### Devpost project page
+https://devpost.com/software/hackflix
 
 #### GitHub Repository :octocat: 
 https://github.com/tgeorge1001/Eri-James-George.git
@@ -14,7 +15,7 @@ https://github.com/tgeorge1001/Eri-James-George.git
 ### Authors
 
 * **Eri Arai** - eriarai – eriarai@seas.upenn.edu – [GitHub](https://github.com/eri-arai)
-* **Thumpasery Joseph George** - Devpost ID – tjgeorge@seas.upenn.edu – [GitHub](https://github.com/tgeorge1001)
+* **Thumpasery Joseph George** - tjgeorge – tjgeorge@seas.upenn.edu – [GitHub](https://github.com/tgeorge1001)
 * **James Grimes** - jdgrimes – jdgrimes@seas.upenn.edu – [GitHub](https://github.com/phewf)
 
 ## Usage
