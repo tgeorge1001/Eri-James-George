@@ -1,16 +1,16 @@
-# Hackflix
+# Hackflix 🎬
 
 ## Overview
 
 ### Project summary
 
-Hackflix is an app that helps you decide what to watch on Netflix. You provide the Hackflix app with your preferences and the app filters the 4000+ movies and TV shows to match those preferences as best as possible. Kiss Netflix-related-decision-paralysis goodbye, because Hackflix is here to cut down the insurmountable amount of content Netflix has to offer into a manageable selection based on what you actually want to watch.
+Hackflix is an app that helps you decide what to watch on Netflix. You provide the Hackflix with your preferences and it filters the 4000+ movies and TV shows to match those preferences as best as possible. Kiss Netflix-related-decision-paralysis goodbye, because Hackflix is here to cut down the insurmountable amount of content Netflix has to offer into a manageable selection based on what you actually want to watch.
 
 Include the link to your Devpost project page here: [Devpost](https://...)
 
 ### Authors
 
-* **Eri Arai** - Devpost ID – eriarai@seas.upenn.edu – [GitHub](https://github.com/eri-arai)
+* **Eri Arai** - eriarai – eriarai@seas.upenn.edu – [GitHub](https://github.com/eri-arai)
 * **Thumpasery Joseph George** - Devpost ID – tjgeorge@seas.upenn.edu – [GitHub](https://github.com/tgeorge1001)
 * **James Grimes** - jdgrimes – jdgrimes@seas.upenn.edu – [GitHub](https://github.com/phewf)
 
@@ -62,24 +62,12 @@ Etc.
 
 ### Tools used
 
-Which frameworks, libraries, or other tools did you use to create your project?
-
-* [Tool 1](https://maven.apache.org/) - Description (e.g. "Web framework used")
-* [Tool 2](https://maven.apache.org/) - Description
-* [Tool 3](https://maven.apache.org/) - Description
+* [Univocity](https://www.univocity.com/pages/about_univocity) - Data manipulation used for CSV parsing.
 
 ### Acknowledgments
 
-Use anyone else's code? Inspired by a particular project? List / link here.
-
-* Item 1
-* Item 2
-* Item 3
+* Inspired by Eri Arai's Fall 2019 CIT 591 final project: Virtual Sommelier Application 🍷.
 
 ### License
 
-If desired, add a section for your license. Reference sites like https://choosealicense.com can help you choose which license meets your needs.
-
-*For example:*
-
->This package is licensed under the GNU General Public License v3.0 (<a href="https://choosealicense.com/licenses/gpl-3.0/" target="_blank">GPL-3</a>).
+>This package is licensed under the [MIT License](https://github.com/tgeorge1001/Eri-James-George/blob/master/LICENSE.txt).
