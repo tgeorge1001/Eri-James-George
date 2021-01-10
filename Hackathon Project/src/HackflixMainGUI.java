@@ -7,20 +7,14 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.FlowLayout;
 import javax.swing.JLayeredPane;
-import javax.swing.JOptionPane;
 import javax.swing.SpringLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.awt.Point;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.JButton;
-import javax.swing.JDialog;
-
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.AbstractAction;
@@ -28,7 +22,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +47,7 @@ public class HackflixMainGUI {
 	private JPanel main_panel = new JPanel();
 	private JLabel movie_or_tv_title_label = new JLabel("");
 	private JTextField txtQuickSearch;
+	@SuppressWarnings("unused")
 	private final Action action = new SwingAction();
 	boolean movies = false;
 	boolean tvshow = false;
@@ -219,7 +213,7 @@ public class HackflixMainGUI {
 		
 		JComboBox rating_combobox = new JComboBox();
 		rating_label.setLabelFor(rating_combobox);
-		rating_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "G/TV-G or lower", "PG/TV-PG", "PG-13/TV-14", "R/TV-MA", "NC-17"}));
+		rating_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "G/TV-G or lower", "PG/TV-PG", "PG-13/TV-14", "R/TV-MA", "NC-17", "NR"}));
 		GridBagConstraints gbc_rating_combobox = new GridBagConstraints();
 		gbc_rating_combobox.fill = GridBagConstraints.BOTH;
 		gbc_rating_combobox.insets = new Insets(0, 0, 5, 5);
@@ -261,7 +255,7 @@ public class HackflixMainGUI {
 		
 		JComboBox director_combobox = new JComboBox();
 		director_label.setLabelFor(director_combobox);
-		director_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Alfred Hitchcock", "Christopher Nolan", "James Cameron", "M. Night Shyamalan", "Martin Scorsese", "Peter Jackson", "Quentin Tarantino", "Stanley Kubrick", "Steven Spielberg", "Taika Waititi", "Tim Burton"}));
+		director_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Alfred Hitchcock", "Christopher Nolan", "M. Night Shyamalan", "Martin Scorsese", "Peter Jackson", "Quentin Tarantino", "Stanley Kubrick", "Steven Spielberg", "Taika Waititi", "Tim Burton"}));
 		GridBagConstraints gbc_director_combobox = new GridBagConstraints();
 		gbc_director_combobox.insets = new Insets(0, 0, 5, 5);
 		gbc_director_combobox.fill = GridBagConstraints.HORIZONTAL;
@@ -430,10 +424,79 @@ public class HackflixMainGUI {
 		JComboBox sort_by_combobox = new JComboBox();
 		sort_by_combobox.setForeground(Color.BLACK);
 		sort_by_combobox.setBackground(Color.GRAY);
-		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Title (Descending)", "Title (Ascending)", "Release Year (Descending)", "Release Year (Ascending)"}));
+		sort_by_combobox.setModel(new DefaultComboBoxModel(new String[] {"---", "Title (Ascending)", "Title (Descending)", "Release Year (Ascending)", "Release Year (Descending)"}));
 		sort_by_combobox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int selection = sort_by_combobox.getSelectedIndex();
+				
+				
+				switch (selection) {
+
+				// This sorts the wine profiles in alphabetical order (A to Z)
+				case 1:
+					allNetflixData = nss.sortByAlphabetAscend(allNetflixData);
+
+					int resultSize1 = allNetflixData.size();
+					String resultText1 = stringOutputRandom(resultSize1);
+					
+					textArea.setText(resultText1);
+					
+					results_panel.revalidate();
+					results_panel.repaint();
+
+
+					break;
+
+				// This sorts the wine profiles by point value (highest to lowest)
+				case 2:
+
+					allNetflixData = nss.sortByAlphabetDescend(allNetflixData);
+
+					int resultSize2 = allNetflixData.size();
+					String resultText2 = stringOutputRandom(resultSize2);
+					
+					textArea.setText(resultText2);
+					
+					results_panel.revalidate();
+					results_panel.repaint();
+					
+					break;
+
+				// This sorts the wine profiles by point value (lowest to highest)
+				case 3:
+					
+					allNetflixData = nss.sortByPriceAscend(allNetflixData);
+
+					int resultSize3 = allNetflixData.size();
+					String resultText3 = stringOutputRandom(resultSize3);
+					
+					textArea.setText(resultText3);
+					
+					results_panel.revalidate();
+					results_panel.repaint();
+					
+					break;
+
+				// This sorts the wine profiles by price (highest to lowest)
+				case 4:
+					
+					allNetflixData = nss.sortByPriceDescend(allNetflixData);
+
+					int resultSize4 = allNetflixData.size();
+					String resultText4 = stringOutputRandom(resultSize4);
+					
+					textArea.setText(resultText4);
+					
+					results_panel.revalidate();
+					results_panel.repaint();
+					
+					break;
+
+				default:
+					break;
+				}
+
+				
 			}
 		});
 		sort_by_panel.add(sort_by_combobox);

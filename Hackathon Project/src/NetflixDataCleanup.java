@@ -84,6 +84,8 @@ public class NetflixDataCleanup {
 	ArrayList<String> PG13rating = new ArrayList<String>(Arrays.asList("PG-13", "TV-14"));
 	ArrayList<String> Rrating = new ArrayList<String>(Arrays.asList("R", "TV-MA"));
 	ArrayList<String> NCrating = new ArrayList<String>(Arrays.asList("NC-17"));
+	ArrayList<String> NRrating = new ArrayList<String>(Arrays.asList("NR"));
+
 
 
 	/**
@@ -606,6 +608,9 @@ public class NetflixDataCleanup {
 		}
 		else if (ratingGroup.equals("NC-17")) {
 			return NCrating;
+		}
+		else if (ratingGroup.equals("NR")) {
+			return NRrating;
 		}
 		else {
 			return null;
